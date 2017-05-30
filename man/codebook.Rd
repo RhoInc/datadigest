@@ -7,12 +7,12 @@
 codebook(data, width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
-\item{data}{A data frame containing the Adverse Events data.}
+\item{data}{A data frame.}
 }
 \description{
 This function creates an interactive codebook using R htmlwidgets.
 }
 \examples{
-webcodebook(data=mtcars)
+codebook(data=mtcars)
 
 }

@@ -3,6 +3,7 @@
 #' Addin for creating an interactive codebook
 #' @import shiny
 #' @import miniUI
+#' @import shinyFiles
 #'
 #' @export
 codebookaddin <- function(){
@@ -12,8 +13,8 @@ codebookaddin <- function(){
     gadgetTitleBar(a(href="https://github.com/RhoInc/webcodebook", "Interactive Codebook Add-in"),
                  #  left = miniTitleBarCancelButton("cancel","Cancel"),
                  left = selectInput("data", NULL, choices=c("Select a dataset")),
-                  # right = miniTitleBarButton("save", "Save as HTML", primary = TRUE)
-                 right = downloadButton("download","Download as HTML")),
+                 right = miniTitleBarButton("save", "Save as HTML", primary = TRUE)),
+                # right = downloadButton("download","Download as HTML")),
     miniContentPanel(
        fillCol(
         flex=c(1,6),
@@ -30,8 +31,9 @@ codebookaddin <- function(){
 
   server <- function(input, output, session){
 
+    
     # find all loaded datasets
-    df <- reactiveValues(names = ls()[sapply(ls(), function(x) class(get(x))) == 'data.frame'])
+    df <- reactiveValues(names = ls(pos=1)[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame'])
 
     observe({print(df$names)})
 
@@ -54,15 +56,20 @@ codebookaddin <- function(){
         codebook::codebook(data=data_choice())
     })
 
-    output$download <- downloadHandler(
-      filename = function() {
-        paste("cbk-", data_choice(), "-", Sys.Date(), ".html", sep="")
-      },
-      content = function(file) {
-        codebook::codebook(data=data_choice())
-      }
-    )
+    # output$download <- downloadHandler(
+    #   filename = function() {
+    #     paste("cbk-", data_choice(), "-", Sys.Date(), ".html", sep="")
+    #   },
+    #   content = function(file) {
+    #     htmlwidgets::saveWidget(codebook(data=data_choice()), file = file)
+    #   }
+    # )
 
+    observeEvent(input$save, {
+      file <- paste0("cbk-", data_choice(), "-", Sys.Date(), ".html")
+      htmlwidgets::saveWidget(codebook(data=data_choice()), file=file)
+    })
+    
     observeEvent(input$cancel, {
       stopApp()
     })
