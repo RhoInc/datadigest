@@ -1,10 +1,6 @@
 #' codebookaddin
 #'
 #' Addin for creating an interactive codebook
-#' @import shiny
-#' @import miniUI
-#' @import shinyFiles
-#'
 #' @export
 codebookaddin <- function(){
 
