@@ -34,9 +34,7 @@ codebookaddin <- function(){
     # find all loaded datasets
     df <- reactiveValues(names = ls(pos=1)[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame'])
 
-    observe({print(df$names)})
-
-
+    # fill in select input based on datasets
     observeEvent(!is.null(df$names), {
       names <- c("Select a dataset", df$names)
       updateSelectInput(session, "data",choices = names)
@@ -65,7 +63,7 @@ codebookaddin <- function(){
     # )
 
     observeEvent(input$save, {
-      file <- paste0("cbk-", data_choice(), "-", Sys.Date(), ".html")
+      file <- paste0(getwd(),"/cbk-", data_choice(), "-", Sys.Date(), ".html")
       htmlwidgets::saveWidget(codebook(data=data_choice()), file=file)
     })
     

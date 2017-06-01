@@ -18,7 +18,7 @@ HTMLWidgets.widget({
 
         x.data = HTMLWidgets.dataframeToD3(x.data);
 
-       // console.log(x.settings);
+        console.log(x.data);
 
         webcodebook.createChart(el, settings).init(x.data);
       },
