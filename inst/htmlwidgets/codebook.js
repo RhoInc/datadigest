@@ -18,9 +18,18 @@ HTMLWidgets.widget({
 
         x.data = HTMLWidgets.dataframeToD3(x.data);
 
+        //coerce data to character before initializng chart (hacktastic bug fix)
+        x.data.forEach(function(row){
+            var cols = Object.keys(row)
+            cols.forEach(function(col){
+              row[col] = ""+row[col]
+            })
+        })
+        
         console.log(x.data);
 
-        webcodebook.createChart(el, settings).init(x.data);
+        chart = webcodebook.createChart(el, settings);
+        chart.init(x.data);
       },
 
       resize: function(width, height) {
