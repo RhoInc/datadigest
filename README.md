@@ -6,7 +6,9 @@
 
 ### Installation:
 
-```devtools::install_github('RhoInc/codebook')```
+```r
+devtools::install_github('RhoInc/codebook')
+```
 
 ### Use:
 ```r
