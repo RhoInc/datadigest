@@ -14,7 +14,7 @@ devtools::install_github('RhoInc/codebook')
 
 1. Produce an interactive codebook to explore in the RStudio viewer or an Rmarkdown or HTML document:
 ```r
-codebook(data = mtcars)
+codebook(mtcars)
 ```
 
 2. Run the codebook Shiny app*, which will produce a codebook from data from your R environment or a file upload.  Decide on a format (interactive summary vs. static summary from **Hmisc::describe**) and download the codebook as an HTML file. 
