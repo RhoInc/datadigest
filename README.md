@@ -19,7 +19,7 @@ codebook(data = mtcars)
 
 2. Run the codebook Shiny app*, which will produce a codebook from data from your R environment or a file upload.  Decide on a format (interactive summary vs. static summary from **Hmisc::describe**) and download the codebook as an HTML file. 
 ```r
-runCodebookApp()
+codebookApp()
 ```
 
 *If you use RStudio, this app will be available to you as an RStudio addin upon package installation. You can access the addin from the RStudio toolbar.
