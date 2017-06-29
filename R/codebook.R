@@ -10,7 +10,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-codebook <- function(data, width = NULL, height = NULL, elementId = NULL) {
+codebook <- function(data) {
 
   # forward options using x
   x = list(
@@ -21,10 +21,7 @@ codebook <- function(data, width = NULL, height = NULL, elementId = NULL) {
   htmlwidgets::createWidget(
     name = 'codebook',
     x,
-    width = width,
-    height = height,
-    package = 'codebook',
-    elementId = elementId
+    package = 'codebook'
   )
 }
 

@@ -2,10 +2,10 @@
 % Please edit documentation in R/codebookaddin.R
 \name{codebookaddin}
 \alias{codebookaddin}
-\title{codebookaddin}
+\title{Codebook RStudio Add-in}
 \usage{
 codebookaddin()
 }
 \description{
-Addin for creating an interactive codebook
+Codebook RStudio Add-in
 }

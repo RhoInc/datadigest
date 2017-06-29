@@ -1,7 +1,7 @@
 Package: codebook
 Type: Package
-Title: Create an interactive codebook from R
-Version: 0.0.0.99
+Title: Create an Interactive Codebook from R
+Version: 0.1.0
 Authors@R: c(
 	person("Becca", "Krouse", email = "rebecca_krouse@rhoworld.com", role = c("cre","aut")),
 	person("Spencer", "Childress", role = c("aut")),
@@ -16,6 +16,9 @@ Depends:
     R (>= 3.3.3)
 Imports: htmlwidgets,
     shiny,
-    miniUI
+    miniUI,
+    Hmisc,
+    htmltools,
+    haven
 
 

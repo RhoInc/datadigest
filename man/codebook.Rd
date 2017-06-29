@@ -4,7 +4,7 @@
 \alias{codebook}
 \title{Create an interactive codebook}
 \usage{
-codebook(data, width = NULL, height = NULL, elementId = NULL)
+codebook(data)
 }
 \arguments{
 \item{data}{A data frame.}
