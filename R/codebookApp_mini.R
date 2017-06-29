@@ -1,12 +1,12 @@
 
-#' Codebook RStudio Add-in
+#' Codebook RStudi Mini-app
 #' @import shiny
 #' @import miniUI
 #' @import htmltools
 #' @importFrom Hmisc html describe
 #' 
 #' @export
-codebookaddin_mini <- function(){
+codebookApp_mini <- function(){
   ui = miniPage(
     
     miniTitleBar(a(href="https://github.com/RhoInc/webcodebook", "Interactive Codebook Add-in"),
@@ -89,7 +89,7 @@ codebookaddin_mini <- function(){
     })
   }
   
-  runGadget(ui_mini, server_mini, viewer = dialogViewer("Codebook add-in", width=1100, height=1000))
+  runGadget(ui, server, viewer = dialogViewer("Codebook add-in", width=1100, height=1000))
 }
 
 

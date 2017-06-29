@@ -1,4 +1,4 @@
-Name: codebookaddin
+Name: codebookApp
 Description: Create interactive codebook from RStudio
-Binding: codebookaddin
+Binding: codebookApp
 Interactive: true

@@ -1,31 +1,3 @@
-ui <- fluidPage(
-  
-  titlePanel("Codebook Shiny App"), 
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
-      selectInput("data", NULL, choices=c("Select a dataset", "Data upload")),
-      conditionalPanel(
-        condition = "input.data=='Data upload'",
-        fileInput('datafile','Upload a file',accept = c('.sas7bdat','.csv'))
-      ),
-      selectInput("type","Select codebook type", choices=c("Interactive","Static")), 
-      downloadButton("dl","Download codebook")
-    ),
-    mainPanel(
-      conditionalPanel(
-        condition = "input.type=='Interactive'",
-        codebookOutput("cbk_int")
-      ),
-      conditionalPanel(
-        condition = "input.type=='Static'",
-        uiOutput("cbk_sta")
-      )
-    ) 
-  )
-)
-
-
 server <- function(input, output, session){
   
   
@@ -98,31 +70,3 @@ server <- function(input, output, session){
   )
   
 }
-
-
-#' Codebook RStudio Add-in
-#' @import shiny
-#' @import htmltools
-#' @importFrom haven read_sas
-#' @importFrom utils read.csv
-#' @importFrom Hmisc html describe
-#' 
-#' @export
-codebookaddin <- function(){
-  runGadget(ui, server, viewer = browserViewer(browser = getOption("browser")))
-}
-
-
-
-#' Codebook standalone Shiny App
-#' @import shiny
-#' @import htmltools
-#' @importFrom haven read_sas
-#' @importFrom utils read.csv
-#' @importFrom Hmisc html describe
-#' 
-#' @export
-runCodebookApp <- function(){
-  shinyApp(ui, server, options = list(launch.browser = TRUE))
-}
-
