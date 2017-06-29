@@ -2,10 +2,10 @@
 % Please edit documentation in R/codebookApp.R
 \name{codebookApp}
 \alias{codebookApp}
-\title{Codebook RStudio Add-in}
+\title{Codebook Shiny App and RStudio Add-in}
 \usage{
 codebookApp()
 }
 \description{
-Codebook RStudio Add-in
+Codebook Shiny App and RStudio Add-in
 }

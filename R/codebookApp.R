@@ -1,4 +1,4 @@
-#' Codebook RStudio Add-in
+#' Codebook Shiny App and RStudio Add-in
 #' @import shiny
 #' @import htmltools
 #' @importFrom haven read_sas
