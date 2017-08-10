@@ -16,8 +16,8 @@ HTMLWidgets.widget({
 
         el.innerHTML = "";
 
+        /*
         rSettings.data = HTMLWidgets.dataframeToD3(rSettings.data);
-
         //coerce data to character before initializng chart (hacktastic bug fix)
         rSettings.data.forEach(function(row){
             var cols = Object.keys(row)
@@ -25,11 +25,11 @@ HTMLWidgets.widget({
               row[col] = ""+row[col]
             })
         })
+        */
 
-        console.log(rSettings.data);
-
-        chart = webcodebook.createExplorer(el, {});
-        chart.init(rSettings.data);
+        d3.select(el).append("span").text("hello explorer!")
+        //chart = webcodebook.createExplorer(el, rSettings["settings"]);
+        //chart.init();
       },
 
       resize: function(width, height) {

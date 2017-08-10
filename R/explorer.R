@@ -1,54 +1,48 @@
 #' Create an interactive codebook
 #'
-#' This function creates an interactive codebook using R htmlwidgets.
+#' This function creates a series of interactive codebook using R htmlwidgets.
 #'
-#' @param data  A data frame.
+#' @param dataArray  a list of dataframes (TODO change to tibble?).
+#' @param addEnv  boolean. Indicates whether to add all data frames in current environemnt to explorer.
+
 #'
 #' @examples
-#' codebook(data=mtcars)
+#' explorer(dataArray=c(cars, iris))
 #'
 #' @import htmlwidgets
 #'
 #' @export
-explorer <- function(data) {
-
-  # forward options using x
+explorer <- function(dataList=c(), addEnv=F) {
+  # (1) Initialize the settings with the raw values passed to the r function
   rSettings = list(
-    data=data
+    rParams=list(
+      dataList = dataList,
+      addEnv = addEnv
+    ),
+    settings = list(
+        files=list(),
+        meta=list(),
+        labelCol=""
+    )
   )
+
+  formatFileList<-function(fileList){
+    
+  }
+  
+  # (2) Prep an array of objects for the user-specified files  (if length(dataArray)>0)
+  dataList_formatted <- formatFileList(dataList)
+  
+  # (3) Prep an array of objects for the environment files (if addEnv=T)
+  env_list <- ls(pos=1)[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame']
+  env_list_formatted <- formatFileList(df_list)
+  
+  # (4) Create the final object to pass to js
 
   # create widget
   htmlwidgets::createWidget(
     name = 'explorer',
     rSettings,
-    package = 'explorer'
+    package = 'codebook'
   )
-}
-
-#' Shiny bindings for explorer
-#'
-#' Output and render functions for using the codebook explorer within Shiny
-#' applications and interactive Rmd documents.
-#'
-#' @param outputId output variable to read from
-#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
-#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-#'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a codebook explorer
-#' @param env The environment in which to evaluate \code{expr}.
-#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
-#'   is useful if you want to save an expression in a variable.
-#'
-#' @name codebook-shiny
-#'
-#' @export
-explorerOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'explorer', width, height, package = 'explorer')
-}
-
-#' @rdname explorer-shiny
-#' @export
-renderExplorer <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, ExplorerOutput, env, quoted = TRUE)
 }
