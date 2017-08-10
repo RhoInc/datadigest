@@ -68,9 +68,6 @@ explorer <- function(dataList=c(), addEnv=T, demo=F) {
     print(demo_list)
     demo_list_formatted <- formatFileList(demo_list)
     rSettings[["settings"]][["files"]] = demo_list_formatted #ignores other settings
-    for(f in demo_list){
-      rm(f) #TODO check against pre-existing namespace
-    }
   }
 
   # (4) create widget
