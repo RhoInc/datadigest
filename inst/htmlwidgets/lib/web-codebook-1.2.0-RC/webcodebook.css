@@ -1,0 +1,650 @@
+/*------------------------------------------------------------------------------------------------\
+General
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook {
+  position: relative;
+}
+
+.web-codebook > * {
+    display: block;
+    width:1024px;
+}
+
+.web-codebook > .section {
+  margin-top:0.5em;
+}
+
+.web-codebook .small {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.web-codebook ul  {
+  padding:0;
+  margin:0;
+}
+
+
+.web-codebook .hidden {
+  display: none !important; /* all .hidden elements should be hidden/display:none */
+}
+
+.web-codebook .clear-highlight {
+  margin-right:1em
+}
+
+/*------------------------------------------------------------------------------------------------\
+Instructions and Title layout
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .nav{
+  margin-top:0.1em
+}
+
+.web-codebook .title .file{
+  font-weight:500;
+  font-size:1.4em;
+}
+
+.web-codebook .rowCount, .web-codebook .columnCount  {
+  padding-left:1em;
+  font-size:0.8em;
+  color:#666;
+}
+
+.web-codebook .rowCount.warn, .web-codebook .columnCount.warn{
+  color:red;
+}
+
+.web-codebook .highlightCount{
+  font-size:0.8em;
+  color:#666;
+}
+
+.web-codebook .instructions .control {
+  padding-left:0.5em;
+}
+
+.web-codebook span.highlightLegend{
+  background-color:orange;
+}
+
+/*------------------------------------------------------------------------------------------------\
+Controls layout
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .controls {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px dashed #ccc;
+  margin-bottom:0.5em;
+  overflow:hidden;
+}
+
+.web-codebook .controls > * {
+    margin: .25em .5em;
+}
+
+.web-codebook .controls #loading-indicator {
+  float: right;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #008CBA;
+  width: 20px;
+  height: 20px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 0 0.5em 0.5em 0;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.web-codebook .controls .controls-title{
+  font-weight:bold;
+  padding-bottom:0.5em;
+}
+
+.web-codebook .controls .data-listing-toggle {
+    display: inline-block;
+}
+
+.web-codebook .controls .group-select span {
+  padding-right: 5px;
+}
+
+.web-codebook .controls .group-select,
+.web-codebook .controls .chart-toggle{
+  display: inline-block;
+  padding-right:1em;
+}
+
+.web-codebook .controls button, .web-codebook .instructions button
+{
+  margin-right:0.5em;
+  background-color:white;
+  border:2px solid #008CBA;
+  border-radius: 4px;
+  padding:.2em .4em;
+}
+
+.web-codebook .controls button:hover, .web-codebook .instructions button:hover{
+  cursor:pointer;
+  background-color:#008CBA;
+  color:white;
+}
+
+.web-codebook .controls button.control-toggle
+{
+  position:absolute;
+  top:0;
+  right:0;
+  margin-top:0.5em;
+}
+
+.web-codebook .controls span.update-controls
+{
+  position:absolute;
+  bottom:0;
+  right:0;
+  margin-top:0.5em;
+  margin-right:0.25em;
+  font-size: 150%;
+  cursor: pointer;
+}
+
+.web-codebook .controls span.update-controls:hover
+{
+    font-weight: bold;
+}
+
+.web-codebook .controls .custom-filters ul li {
+  margin: 0 3px 5px 0;
+}
+
+.web-codebook .controls .custom-filters ul li.active > a > label,
+.web-codebook .controls .custom-filters ul li: hover > a > label {
+  color: white;
+}
+
+.web-codebook .controls .custom-filters ul li .filterType {
+  font-size: 0.8em
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom * {
+  display: block;
+  min-width: 50px;
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom span.filterLabel * {
+  display: inline-block;
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom span.filter-label {
+	display: block;
+	font-size: .75em;
+	color: #777;
+	margin-bottom: 3px;
+}
+
+
+
+/*------------------------------------------------------------------------------------------------\
+Row layout
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .summaryTable > * {
+}
+
+.web-codebook .summaryTable .summaryText {
+  display: block;
+  clear: both;
+}
+
+.web-codebook .summaryTable .variable-row {
+  margin-top: 0.3em;
+  display: block;
+  border:1px solid #999;
+}
+.web-codebook .summaryTable .variable-row .section {
+  display:block;
+}
+
+.web-codebook .summaryTable .variable-row.hiddenChart .row-chart {
+  display: none;
+}
+
+/**-------------------------------------------------------------------------------------------\
+Header layout
+\-------------------------------------------------------------------------------------------**/
+
+.web-codebook .summaryTable .variable-row .row-head {
+  background:#eee;
+  padding:0.1em;
+  overflow:hidden;
+}
+
+.web-codebook .summaryTable .variable-row .row-head > * {
+  display:inline-block;
+}
+
+/**-------------------------------------------------------------------------------------------\
+Header layout - Toggle
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-title{
+padding-right: 1em;
+}
+
+.web-codebook .summaryTable .variable-row .row-title > * {
+  display:inline-block;
+}
+
+.web-codebook .summaryTable .variable-row .row-title .row-toggle{
+  font-size:0.5em;
+  cursor:pointer;
+  vertical-align: top;
+  color:#999;
+  padding-right:0.5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-title .row-toggle:hover{
+  background:#eee;
+}
+
+/**-------------------------------------------------------------------------------------------\
+Header - Title layout
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-title .title-span{
+  font-weight: bold;
+
+}
+
+.web-codebook .summaryTable .variable-row .row-title .label-span{
+  padding-left:0.2em;
+  font-size:0.8em;
+}
+
+/**-------------------------------------------------------------------------------------------\
+Header - Details layout
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row {
+  position:relative;
+}
+
+.web-codebook .summaryTable .variable-row .type-label{
+  display:block;
+  position:absolute;
+  right:-2em;
+  top:0;
+  width:2em
+}
+
+.web-codebook .summaryTable .variable-row .type-label li{
+  display:block;
+  list-style: none;
+  text-align: left;
+  background:black;
+  color:white;
+  border:1px solid #999;
+  border-radius:0 5px 5px 0;
+  padding:2px;
+  cursor:pointer;
+  font-size:0.6em;
+  opacity:0.8;
+}
+
+.web-codebook .summaryTable .variable-row .type-label li.selected{
+  background:white;
+  color:black;
+  font-weight:bold;
+}
+
+.web-codebook .summaryTable .variable-row .type-label li:hover{
+  text-decoration: underline;
+}
+
+.web-codebook .summaryTable .variable-row .row-details {
+  float:right;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul  {
+
+
+}
+.web-codebook .summaryTable .variable-row .row-details ul li {
+  display: inline-block;
+  padding-right: .5em;
+  vertical-align:top;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div {
+  display: block;
+  text-align: left;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div.label {
+  display: inline-block;
+  padding-right: .2em;
+  font-size: 0.8em;
+  color: #999;
+  min-width:1em;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div.details {
+  padding-right: .2em;
+  font-size:0.5em;
+  cursor:pointer;
+  color:blue;
+}
+
+/**-------------------------------------------------------------------------------------------\
+Header layout - variable summary
+\-------------------------------------------------------------------------------------------**/
+
+
+.web-codebook .summaryTable .variable-row .row-head .row-values .value-list{
+  margin-top:0.1em;
+  font-size: 0.7em;
+  list-style:none;
+}
+
+.web-codebook .summaryTable .variable-row .row-head .row-values .value-list li{
+  display:inline-block;
+  padding:0 0.3em 0 0.3em;
+  border-right : 1px solid #333;
+}
+
+.web-codebook .summaryTable .variable-row .row-head .row-values .value-list li:first-of-type{
+  padding-left:none;
+}
+
+.web-codebook .summaryTable .variable-row .row-head .row-values .value-list li:last-of-type{
+  border-right:none;
+}
+
+
+/**-------------------------------------------------------------------------------------------\
+Chart layout
+\-------------------------------------------------------------------------------------------**/
+
+.web-codebook .summaryTable .variable-row .row-controls {
+  border-bottom:1px dashed #999;
+  padding:0.2em 0em 0.2em 0.4em;
+}
+
+.web-codebook .summaryTable .variable-row .row-controls > * {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart div.missingText{
+  padding:.5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart p.panel-label{
+  margin-top:0.2em;
+  margin-bottom:0.2em;
+}
+
+.web-codebook .summaryTable g.bar-group.highlighted rect{
+  fill:orange;
+}
+
+.web-codebook .summaryTable g.bar-group rect:hover {
+  cursor: pointer;
+  stroke-width:3px;
+  stroke:black;
+}
+
+
+.web-codebook .summaryTable .variable-row .row-chart .legend {
+    margin-left:1em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart .svg-tooltip {
+    display: none;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart .svg-tooltip.active {
+    display: block;
+}
+
+/*------------------------------------------------------------------------------------------------\
+  Data listing
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook .dataListing {
+
+    }
+
+    .web-codebook .dataListing .description {
+        padding: 0 5px 0 5px;
+    }
+
+    /***--------------------------------------------------------------------------------------\
+        Sort container
+    \--------------------------------------------------------------------------------------***/
+
+        .web-codebook .dataListing .sort-container {
+            float: left;
+        }
+
+        .web-codebook .dataListing .sort-container .description {
+            font-style: italic;
+        }
+
+        .web-codebook .dataListing .sort-container .sort-box {
+            display: inline-block;
+            border: 2px solid #008CBA;
+            border-radius: 4px;
+            padding: 2px;
+            margin-left: 3px;
+        }
+
+        .web-codebook .dataListing .sort-container .sort-box .remove-sort {
+            float: right;
+            border: 1px solid gray;
+            padding: 1px 2px 1px 2px;
+            font-size: 25%;
+        }
+
+        .web-codebook .dataListing .sort-container .sort-box .remove-sort:hover {
+            cursor: pointer;
+            background-color: #008CBA;
+            color: white;
+        }
+
+    /***--------------------------------------------------------------------------------------\
+        Search container
+    \--------------------------------------------------------------------------------------***/
+
+        .web-codebook .dataListing .search-container {
+            float: right;
+        }
+
+        .web-codebook .dataListing .search-container .search-box {
+            type: search;
+        }
+
+    /***--------------------------------------------------------------------------------------\
+        Table
+    \--------------------------------------------------------------------------------------***/
+
+        .web-codebook .listing-container {
+            padding: 1% 0;
+            clear: both;
+        }
+
+        .web-codebook  .listing-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .web-codebook  .listing-container thead tr {
+            border-bottom: 2px solid black;
+        }
+
+        .web-codebook  .listing-container tbody tr {
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .web-codebook  .listing-container tbody tr.filtered {
+            display: none;
+        }
+
+        .web-codebook  .listing-container tbody tr.highlight {
+             background:orange;
+        }
+
+        /*.web-codebook .dataListing .listing-container tbody tr:nth-child(even) {
+            background: #eee;
+        }*/
+
+        .web-codebook  .listing-container th {
+            cursor: pointer;
+            text-align: left;
+            padding: 2px 5px;
+        }
+
+        .web-codebook  .listing-container th:hover {
+            background: rgb(123,175,212);
+        }
+
+        .web-codebook .listing-container td {
+            text-align: left;
+            padding: 2px 5px;
+        }
+
+    /***--------------------------------------------------------------------------------------\
+        Pagination container
+    \--------------------------------------------------------------------------------------***/
+
+        .web-codebook .dataListing .pagination-container a {
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        .web-codebook .dataListing .pagination-container a:first-child {
+            margin-left: 5px;
+        }
+
+        .web-codebook .dataListing .pagination-container a.active {
+            border: 2px solid gray;
+            border-radius: 4px;
+        }
+
+/***--------------------------------------------------------------------------------------\
+  Nav
+\--------------------------------------------------------------------------------------***/
+
+    .web-codebook .nav ul.nav-tabs {
+        list-style-type: none;
+        overflow: hidden;
+        background-color: black;
+        padding:0;
+    }
+
+    .web-codebook .nav   ul.nav-tabs li {
+        float: left;
+        cursor:pointer;
+        border:2px solid black;
+        height:2.5em;
+        padding:0 10px 0 10px;
+        line-height: 2.5em;
+        text-align: center;
+    }
+
+    .web-codebook .nav ul.nav-tabs li a {
+        display: block;
+        text-align: center;
+        color:white;
+        text-decoration: none;
+    }
+
+    .web-codebook .nav ul.nav-tabs li:hover {
+        background-color: #777;
+        border:2px solid #777;
+    }
+
+    .web-codebook .nav ul.nav-tabs li.settings {
+        float: right;
+    }
+
+    .web-codebook .nav ul.nav-tabs li.settings a {
+    }
+
+    .web-codebook .nav ul.nav-tabs li.active, ul.nav-tabs li.active:hover {
+        background-color: white;
+        border:2px solid black;
+
+    }
+
+    .web-codebook .nav ul.nav-tabs li.active a, ul.nav-tabs li.active:hover a{
+        color:black;
+    }
+
+/*------------------------------------------------------------------------------------------------\
+  Settings
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook .settings table.column-table {
+        border-collapse: collapse;
+    }
+
+    .web-codebook .settings table.column-table thead tr {
+        border-bottom: 2px solid black;
+    }
+
+    .web-codebook .settings table.column-table tbody tr {
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .web-codebook .settings table.column-table th {
+        text-align: center;
+        padding: 2px 10px;
+    }
+
+    .web-codebook .settings table.column-table th.Column {
+        text-align: right;
+    }
+
+    .web-codebook .settings table.column-table td {
+        text-align: center;
+        padding: 2px 10px;
+    }
+
+    .web-codebook .settings table.column-table td.Column {
+        text-align: right;
+    }
+
+/*------------------------------------------------------------------------------------------------\
+  Data Listing
+\------------------------------------------------------------------------------------------------*/
+
+  .web-codebook .fileListing tr.selected{
+      background: #008CBA;
+      color:white;
+  }
+
+  .web-codebook .fileListing td.link{
+    color:blue;
+    text-decoration:underline;
+    cursor:pointer;
+  }
