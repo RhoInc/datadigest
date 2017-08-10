@@ -12,7 +12,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-explorer <- function(dataList=c(), addEnv=F, demo=F) {
+explorer <- function(dataList=c(), addEnv=T, demo=F) {
   # (1) Initialize the settings with the raw values passed to the r function
   rSettings = list(
     rParams=list(
@@ -46,25 +46,34 @@ explorer <- function(dataList=c(), addEnv=F, demo=F) {
   }
 
   # (2) Prep an array of objects for the user-specified files  (if length(dataArray)>0)
-  data_list_formatted <- formatFileList(dataList)
+    data_list_formatted <- formatFileList(dataList)
+    if(length(data_list_formatted)>0){
+      rSettings[["settings"]][["files"]] = c(rSettings[["settings"]][["files"]], data_list_formatted)
+    }
+
 
   # (3) Prep an array of objects for the environment files (if addEnv=T)
-  env_list <- ls(pos=1)[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame']
-  env_list_formatted <- formatFileList(env_list)
-
-
-  # (4) load 20 datasets and put them in the environment
-  demo_list = ls("package:datasets")[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame']
-  print(demo_list)
-  demo_list_formatted <- formatFileList(demo_list)
-  for(f in demo_list){
-    rm(f) #TODO check against pre-existing namespace
+  if(addEnv){
+    env_list <- ls(pos=1)[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame']
+    env_list_formatted <- formatFileList(env_list)
+    if(length(env_list_formatted)>0){
+      rSettings[["settings"]][["files"]] = c(rSettings[["settings"]][["files"]], env_list_formatted)  
+    }
   }
 
-  # (4) Create the final object to pass to js
-  rSettings[["settings"]][["files"]] = demo_list_formatted
+  # (4) load 20 datasets and put them in the environment (if demo=T)
+  if(demo==T){
+    demo_list = ls("package:datasets")[sapply(ls("package:datasets"), function(x) class(get(x))) == 'data.frame']
+    
+    print(demo_list)
+    demo_list_formatted <- formatFileList(demo_list)
+    rSettings[["settings"]][["files"]] = demo_list_formatted #ignores other settings
+    for(f in demo_list){
+      rm(f) #TODO check against pre-existing namespace
+    }
+  }
 
-  # create widget
+  # (4) create widget
   htmlwidgets::createWidget(
     name = 'explorer',
     rSettings,

@@ -26,8 +26,6 @@ HTMLWidgets.widget({
             })
         })
         */
-
-        d3.select(el).append("span").text("hello explorer!")
         testjson1 = [{"row":1,"name":"alex"},{"row":2,"name":"george"}]
         testjson2 = [{"row":3,"name":"becca"},{"row":4,"name":"agustin"}]
 
