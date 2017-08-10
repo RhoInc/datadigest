@@ -9,7 +9,7 @@ dependencies:
    script: webcharts.js
    stylesheet: webcharts.css
  - name: web-codebook
-   version: 1.2.0-RC
-   src: htmlwidgets/lib/web-codebook-1.2.0-RC
+   version: 1.2.0
+   src: htmlwidgets/lib/web-codebook-1.2.0
    script: webcodebook.js
    stylesheet: webcodebook.css
