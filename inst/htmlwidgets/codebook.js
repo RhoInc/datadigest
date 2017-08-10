@@ -10,26 +10,26 @@ HTMLWidgets.widget({
 
     return {
 
-      renderValue: function(x) {
+      renderValue: function(rSettings) {
+
+        console.log(rSettings)
 
         el.innerHTML = "";
 
-        var settings = {};
-
-        x.data = HTMLWidgets.dataframeToD3(x.data);
+        rSettings.data = HTMLWidgets.dataframeToD3(rSettings.data);
 
         //coerce data to character before initializng chart (hacktastic bug fix)
-        x.data.forEach(function(row){
+        rSettings.data.forEach(function(row){
             var cols = Object.keys(row)
             cols.forEach(function(col){
               row[col] = ""+row[col]
             })
         })
-        
-        console.log(x.data);
 
-        chart = webcodebook.createChart(el, settings);
-        chart.init(x.data);
+        console.log(rSettings.data);
+
+        chart = webcodebook.createChart(el, {});
+        chart.init(rSettings.data);
       },
 
       resize: function(width, height) {

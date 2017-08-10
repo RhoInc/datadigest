@@ -3153,7 +3153,7 @@ function init$14(explorer) {
   var cols = Object.keys(explorer.config.files[0]).filter(function (f) {
     return explorer.config.ignoredColumns.indexOf(f) == -1;
   }).filter(function (f) {
-    return ['settings', 'selected', 'event'].indexOf(f) == -1;
+    return ['settings', 'selected', 'event', 'json'].indexOf(f) == -1;
   }); //drop system variables from table
 
   //Create the table
@@ -3210,9 +3210,15 @@ function makeCodebook(explorer) {
     explorer.fileListing.init(explorer);
   });
 
-  d3.csv(this.current.path, function (error, data) {
-    explorer.codebook.init(data);
-  });
+  if (this.current.json) {
+    explorer.codebook.init(this.current.json);
+  } else if (this.current.path) {
+    d3.csv(this.current.path, function (error, data) {
+      explorer.codebook.init(data);
+    });
+  } else {
+    alert('No data provided for the selected file.');
+  }
 }
 
 function createExplorer() {
