@@ -1,0 +1,54 @@
+#' Create an interactive codebook
+#'
+#' This function creates an interactive codebook using R htmlwidgets.
+#'
+#' @param data  A data frame.
+#'
+#' @examples
+#' codebook(data=mtcars)
+#'
+#' @import htmlwidgets
+#'
+#' @export
+explorer <- function(data) {
+
+  # forward options using x
+  rSettings = list(
+    data=data
+  )
+
+  # create widget
+  htmlwidgets::createWidget(
+    name = 'explorer',
+    rSettings,
+    package = 'explorer'
+  )
+}
+
+#' Shiny bindings for explorer
+#'
+#' Output and render functions for using the codebook explorer within Shiny
+#' applications and interactive Rmd documents.
+#'
+#' @param outputId output variable to read from
+#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
+#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
+#'   string and have \code{'px'} appended.
+#' @param expr An expression that generates a codebook explorer
+#' @param env The environment in which to evaluate \code{expr}.
+#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
+#'   is useful if you want to save an expression in a variable.
+#'
+#' @name codebook-shiny
+#'
+#' @export
+explorerOutput <- function(outputId, width = '100%', height = '400px'){
+  htmlwidgets::shinyWidgetOutput(outputId, 'explorer', width, height, package = 'explorer')
+}
+
+#' @rdname explorer-shiny
+#' @export
+renderExplorer <- function(expr, env = parent.frame(), quoted = FALSE) {
+  if (!quoted) { expr <- substitute(expr) } # force quoted
+  htmlwidgets::shinyRenderWidget(expr, ExplorerOutput, env, quoted = TRUE)
+}
