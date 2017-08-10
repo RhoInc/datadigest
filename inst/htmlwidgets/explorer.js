@@ -28,8 +28,25 @@ HTMLWidgets.widget({
         */
 
         d3.select(el).append("span").text("hello explorer!")
-        //chart = webcodebook.createExplorer(el, rSettings["settings"]);
-        //chart.init();
+        testjson1 = [{"row":1,"name":"alex"},{"row":2,"name":"george"}]
+        testjson2 = [{"row":3,"name":"becca"},{"row":4,"name":"agustin"}]
+
+        var testSettings  = {
+          labelColumn:"Dataset",
+          ignoredColumns:[],
+          files:[
+            {Dataset:"test1",json:testjson1},
+            {Dataset:"test2",json:testjson2}
+          ],
+          meta:[]
+        };
+
+
+        //jsSettings = testSettings
+        jsSettings = rSettings["settings"]
+
+        chart = webcodebook.createExplorer(el, jsSettings);
+        chart.init();
       },
 
       resize: function(width, height) {
