@@ -73,7 +73,10 @@ explorer <- function(dataList=c(), addEnv=T, demo=F) {
   htmlwidgets::createWidget(
     name = 'explorer',
     rSettings,
-    package = 'codebook'
+    package = 'codebook', 
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.fill=FALSE
+    )
   )
 }
 

@@ -21,7 +21,10 @@ codebook <- function(data) {
   htmlwidgets::createWidget(
     name = 'codebook',
     rSettings,
-    package = 'codebook'
+    package = 'codebook', 
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.fill=FALSE
+    )
   )
 }
 
