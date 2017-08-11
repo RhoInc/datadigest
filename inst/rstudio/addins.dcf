@@ -5,5 +5,5 @@ Interactive: true
 
 Name: Data Explorer App
 Description: Explorer Data loaded in to the R session
-Binding: DataExplorerApp
+Binding: explorerApp
 Interactive: true
