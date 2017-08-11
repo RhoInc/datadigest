@@ -4,12 +4,12 @@
 \alias{explorer}
 \title{Create an interactive codebook}
 \usage{
-explorer(dataArray = c(), addEnv = F)
+explorer(dataList = c(), addEnv = T, demo = F)
 }
 \arguments{
-\item{dataArray}{a list of dataframes (TODO change to tibble?).}
-
 \item{addEnv}{boolean. Indicates whether to add all data frames in current environemnt to explorer.}
+
+\item{dataArray}{a list of dataframes (TODO change to tibble?).}
 }
 \description{
 This function creates a series of interactive codebook using R htmlwidgets.

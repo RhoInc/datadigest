@@ -16,16 +16,6 @@ HTMLWidgets.widget({
 
         el.innerHTML = "";
 
-        /*
-        rSettings.data = HTMLWidgets.dataframeToD3(rSettings.data);
-        //coerce data to character before initializng chart (hacktastic bug fix)
-        rSettings.data.forEach(function(row){
-            var cols = Object.keys(row)
-            cols.forEach(function(col){
-              row[col] = ""+row[col]
-            })
-        })
-        */
         testjson1 = [{"row":1,"name":"alex"},{"row":2,"name":"george"}]
         testjson2 = [{"row":3,"name":"becca"},{"row":4,"name":"agustin"}]
 
@@ -38,7 +28,6 @@ HTMLWidgets.widget({
           ],
           meta:[]
         };
-
 
         //jsSettings = testSettings
         jsSettings = rSettings["settings"]
