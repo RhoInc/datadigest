@@ -9,6 +9,7 @@
 
 explorerApp <- function(){
   ui = basicPage(
+    includeCSS("./R/www/explorerTheme.css"),
     explorerOutput("exp_int"),
     suppressDependencies("bootstrap")
     )
