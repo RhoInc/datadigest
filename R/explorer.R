@@ -85,7 +85,7 @@ explorer <- function(dataList = NULL, addEnv=TRUE, demo=FALSE) {
   # (3) Prep an array of objects for the environment files (if addEnv=T)
   if(addEnv){
     if(length(ls(pos=1))>0){
-      env_list <- ls(pos=1)[sapply(ls(pos=1), function(x) class(get(x))) == 'data.frame']
+      env_list <- ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "data.frame"))]
       env_list_formatted <- formatFileList(env_list)
       if(length(env_list_formatted)>0){
         rSettings[["settings"]][["files"]] = c(rSettings[["settings"]][["files"]], env_list_formatted)
@@ -100,7 +100,7 @@ explorer <- function(dataList = NULL, addEnv=TRUE, demo=FALSE) {
 
   # (4) load 20 datasets and put them in the environment (if demo=T)
   if(demo){
-    demo_list = ls("package:datasets")[sapply(ls("package:datasets"), function(x) class(get(x))) == 'data.frame']
+    demo_list = ls("package:datasets")[sapply(ls("package:datasets"), function(x) inherits(get(x), "data.frame"))]
     demo_list_formatted <- formatFileList(demo_list)
     rSettings[["settings"]][["files"]] = demo_list_formatted #ignores other settings
   }
