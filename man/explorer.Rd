@@ -4,17 +4,21 @@
 \alias{explorer}
 \title{Create an interactive codebook}
 \usage{
-explorer(dataList = c(), addEnv = T, demo = F)
+explorer(dataList = NULL, addEnv = TRUE, demo = FALSE)
 }
 \arguments{
-\item{addEnv}{boolean. Indicates whether to add all data frames in current environemnt to explorer.}
+\item{dataList}{A list of (optionally named) data frames. Also accepts a character vector of data frame names (must be loaded in environment).}
 
-\item{dataArray}{a list of dataframes (TODO change to tibble?).}
+\item{addEnv}{Logical. Indicates whether to add all data frames in current environemnt to explorer. Defaults to \code{addEnv=TRUE}.}
+
+\item{demo}{Logical. Indicates whether to display demo data frames.  If \code{TRUE}, \code{dataList} and \code{addEnv} settings will be ignored.  Defaults to \code{demo=FALSE}.}
 }
 \description{
 This function creates a series of interactive codebook using R htmlwidgets.
 }
 \examples{
-explorer(dataArray=c(cars, iris))
+explorer(dataList = list(Cars = mtcars, Iris = iris))
+
+explorer(dataList = c("mtcars", "iris"))
 
 }
