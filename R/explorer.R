@@ -90,11 +90,11 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
       if(length(env_list_formatted)>0){
         rSettings[["settings"]][["files"]] = c(rSettings[["settings"]][["files"]], env_list_formatted)
       } else {
-        warning("No datasets to add from working environment.")
+        warning("No datasets to add from working environment; continuing with other user specified data sets.")
       } 
     }
     else{
-      warning("No datasets to add from working environment.")
+      warning("No datasets to add from working environment; continuing with other user specified data sets.")
     }
   }
 
