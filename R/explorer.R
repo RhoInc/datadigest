@@ -2,44 +2,44 @@
 #'
 #' This function creates a series of interactive codebook using R htmlwidgets.
 #'
-#' @param dataList  A list of (optionally named) data frames. Also accepts a character vector of data frame names (must be loaded in environment).
+#' @param data  A list of (optionally named) data frames. Also accepts a character vector of data frame names (must be loaded in environment).
 #' @param addEnv  Logical. Indicates whether to add all data frames in current environemnt to explorer. Defaults to \code{addEnv=TRUE}.
 #' @param demo   Logical. Indicates whether to display demo data frames.  If \code{TRUE}, \code{dataList} and \code{addEnv} settings will be ignored.  Defaults to \code{demo=FALSE}.
 
 #'
 #' @examples
-#' explorer(dataList = list(Cars = mtcars, Iris = iris))
+#' explorer(data = list(Cars = mtcars, Iris = iris))
 #' 
-#' explorer(dataList = c("mtcars", "iris"))
+#' explorer(data = c("mtcars", "iris"))
 #'
 #' @import htmlwidgets
 #'
 #' @export
-explorer <- function(dataList = NULL, addEnv=TRUE, demo=FALSE) {
+explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
 
   # get names of files in dataList as text string
-  if (is.list(dataList)){
-    if(is.null(names(dataList))){
-      names_spec <- rep("", length(dataList))
+  if (is.list(data)){
+    if(is.null(names(data))){
+      names_spec <- rep("", length(data))
     }else{
-      names_spec <- names(dataList)
+      names_spec <- names(data)
     }
-    names_auto <- deparse(substitute(dataList))
+    names_auto <- deparse(substitute(data))
     names_auto <- gsub("list\\(|\\)","", names_auto)
     names_auto <- unlist(lapply(strsplit(names_auto, split = ","), trimws))
     
     out <- data.frame(names_spec, names_auto, stringsAsFactors = FALSE)
     namesList <- ifelse(out$names_spec=="", out$names_auto, out$names_spec)
     out <- NULL
-    names(dataList) <- NULL
+    names(data) <- NULL
   } else { 
-    namesList <- dataList
+    namesList <- data
   }
 
   # (1) Initialize the settings with the raw values passed to the r function
   rSettings = list(
     rParams=list(
-      dataList = dataList,
+      data = data,
       addEnv = addEnv
     ),
     settings = list(
@@ -77,7 +77,7 @@ explorer <- function(dataList = NULL, addEnv=TRUE, demo=FALSE) {
 
   
   # (2) Prep an array of objects for the user-specified files  (if length(dataArray)>0)
-    data_list_formatted <- formatFileList(dataList)
+    data_list_formatted <- formatFileList(data)
     if(length(data_list_formatted)>0){
       rSettings[["settings"]][["files"]] = c(rSettings[["settings"]][["files"]], data_list_formatted)
     }
