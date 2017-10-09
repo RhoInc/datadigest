@@ -13,15 +13,18 @@
 codebook <- function(data) {
 
   # forward options using x
-  x = list(
+  rSettings = list(
     data=data
   )
 
   # create widget
   htmlwidgets::createWidget(
     name = 'codebook',
-    x,
-    package = 'codebook'
+    rSettings,
+    package = 'codebook', 
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.fill=FALSE
+    )
   )
 }
 

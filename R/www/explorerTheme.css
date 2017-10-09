@@ -1,0 +1,41 @@
+
+.container-fluid > * {
+  display:block;
+  padding-bottom:0.5em;
+}
+
+.container-fluid > style {
+  display:none;
+}
+
+.help-block{
+  font-weight:bold;
+}
+
+.form-group *{
+  display:inline-block;
+}
+
+.form-group > label {
+  display:none;
+}
+
+.btn-default{
+    background-color: white;
+    border-radius: 4px;
+    padding: .2em .4em;
+    margin-top:.5em;
+}
+
+.btn-file{
+    border: 2px solid #008CBA;
+}
+
+button#clear{
+    border: 2px solid red;
+}
+
+.explorer{ 
+  border-top:1px dashed #999;
+  margin-top:1em;
+}
