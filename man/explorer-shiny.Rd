@@ -3,13 +3,12 @@
 \name{explorer-shiny}
 \alias{explorer-shiny}
 \alias{explorerOutput}
-\alias{explorer-shiny}
-\alias{codebookOutput}
-\title{Shiny bindings for Explorer}
+\alias{renderExplorer}
+\title{Shiny bindings for codebook-explorer}
 \usage{
 explorerOutput(outputId, width = "100\%", height = "400px")
 
-codebookOutput(outputId, width = "100\%", height = "400px")
+renderExplorer(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}
@@ -18,20 +17,7 @@ codebookOutput(outputId, width = "100\%", height = "400px")
 \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 string and have \code{'px'} appended.}
 
-\item{expr}{An expression that generates a codebook}
-
-\item{env}{The environment in which to evaluate \code{expr}.}
-
-\item{quoted}{Is \code{expr} a quoted expression (with \code{quote()})? This
-is useful if you want to save an expression in a variable.}
-
-\item{outputId}{output variable to read from}
-
-\item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
-\code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-string and have \code{'px'} appended.}
-
-\item{expr}{An expression that generates a codebook}
+\item{expr}{An expression that generates a codebook-explorer}
 
 \item{env}{The environment in which to evaluate \code{expr}.}
 
@@ -39,9 +25,6 @@ string and have \code{'px'} appended.}
 is useful if you want to save an expression in a variable.}
 }
 \description{
-Output and render functions for using codebook within Shiny
-applications and interactive Rmd documents.
-
-Output and render functions for using codebook within Shiny
+Output and render functions for using codebook-explorer within Shiny
 applications and interactive Rmd documents.
 }
