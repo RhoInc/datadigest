@@ -1,19 +1,19 @@
-.web-codebook .instructions.section .form-group {
+.form-group {
   display:inline-block;
   margin-left:1em;
   width:auto;
 }
 
-.web-codebook .instructions.section .form-group *{
+.form-group *{
   display:inline-block;
 
 }
 
-.web-codebook .instructions.section .form-group > label {
+.form-group > label {
   display:none;
 }
 
-.web-codebook .instructions.section .input-group .btn-file{
+.input-group .btn-file{
     background-color: white;
     border: 2px solid #008CBA;
     border-radius: 4px;
