@@ -98,7 +98,7 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
     }
     
     if(length(ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "tbl_df"))])>0){
-      warning("Explorer may not work as expected on objects of class `tbl_df`.")
+      warning("Explorer may not work as expected on objects of class `tbl_df` that contain list-columns.")
     }
   }
 
