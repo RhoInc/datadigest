@@ -28,12 +28,12 @@ explorerApp <- function(){
     #     actionButton('clear','Clear file list')
     #   )
     # )
-   
+    
+  
     # initiate reactive values
-    dd <- reactiveValues(data=NULL)
-    
- 
-    
+    dd <- reactiveValues(data=NULL, 
+                         addEnv = ifelse(length(ls(pos=1))==0, FALSE, length(ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "data.frame"))])>0))
+     
     observeEvent(input$datafile, {
 
       dataList <- vector()
@@ -55,14 +55,17 @@ explorerApp <- function(){
     
     observeEvent(input$clear, {
       dd$data <- NULL
+      dd$addEnv <- FALSE   ### we can delete this line if we only want the CLEAR button to remove uploaded files
     })
     
     
     output$exp_int <- renderExplorer({
       if(!is.null(dd$data)){
-        explorer(data=dd$data) 
-      } else {
-        explorer(demo=T)
+        explorer(data=dd$data, addEnv=dd$addEnv, demo=FALSE) 
+      } else if (is.null(dd$data) & dd$addEnv==TRUE){
+        explorer(data=NULL, addEnv = TRUE)
+      }else {
+        explorer(data=NULL, addEnv=FALSE, demo=T)
       }
     })
     

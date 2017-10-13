@@ -92,10 +92,15 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
       } else {
         warning("No datasets to add from working environment; continuing with other user specified data sets.")
       } 
+      
+      if(length(ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "tbl_df"))])>0){
+        warning("Explorer may not work as expected on objects of class `tbl_df` that contain list-columns.")
+      }
     }
     else{
       warning("No datasets to add from working environment; continuing with other user specified data sets.")
     }
+    
   }
 
   # (4) load 20 datasets and put them in the environment (if demo=T)
