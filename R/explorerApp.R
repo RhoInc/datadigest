@@ -28,10 +28,11 @@ explorerApp <- function(){
     #     actionButton('clear','Clear file list')
     #   )
     # )
-   
+    
+  
     # initiate reactive values
     dd <- reactiveValues(data=NULL, 
-                         addEnv = length(ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "data.frame"))])>0)
+                         addEnv = ifelse(length(ls(pos=1))==0, FALSE, length(ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "data.frame"))])>0))
      
     observeEvent(input$datafile, {
 
@@ -64,7 +65,7 @@ explorerApp <- function(){
       } else if (is.null(dd$data) & dd$addEnv==TRUE){
         explorer(data=NULL, addEnv = TRUE)
       }else {
-        explorer(demo=T)
+        explorer(data=NULL, addEnv=FALSE, demo=T)
       }
     })
     
