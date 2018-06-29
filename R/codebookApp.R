@@ -4,6 +4,7 @@
 #' @importFrom haven read_sas
 #' @importFrom utils read.csv
 #' @importFrom Hmisc html describe
+#' @importFrom tools file_path_sans_ext
 #' 
 #' @export
 codebookApp <- function(){
@@ -56,6 +57,7 @@ codebookApp <- function(){
         input$datafile
       }
     })
+
     
     data_choice <- reactive({
       
@@ -91,18 +93,40 @@ codebookApp <- function(){
     output$cbk_sta <- renderUI({
       req(!is.null(data_choice()))
       
-      Hmisc::html(Hmisc::describe(data_choice(), descript=input$data)) 
+      if (! input$data %in% c("Select a dataset", "Data upload")){
+        suppressWarnings(  ## suppress warning that comes from Hmisc about pixels
+          Hmisc::html(Hmisc::describe(data_choice(), descript=input$data)) 
+        )      } else {
+          suppressWarnings(  ## suppress warning that comes from Hmisc about pixels
+            Hmisc::html(Hmisc::describe(data_choice(), descript=input$datafile$name)) 
+          )      }
+    
     })
     
     output$dl <- downloadHandler(
       filename = function() {
-        paste("cbk-", input$data, "-", Sys.Date(), ".html", sep="") 
+        if (! input$data %in% c("Select a dataset", "Data upload")){
+          paste("cbk-", input$data, "-", Sys.Date(), ".html", sep="") 
+        } else {
+          paste("cbk-", tools::file_path_sans_ext(input$datafile$name), "-", Sys.Date(), ".html", sep="")
+        }
       },
       content = function(file) {
         if (input$type=="Interactive"){
           htmlwidgets::saveWidget(codebook(data=data_choice()), file = file) 
         } else {
-          htmltools::save_html(Hmisc::html(Hmisc::describe(data_choice(), descript=input$data)), file = file)
+          if (! input$data %in% c("Select a dataset", "Data upload")){
+            htmltools::save_html(
+              suppressWarnings(
+                Hmisc::html(Hmisc::describe(data_choice(), descript=input$data))
+              ), 
+              file = file) 
+          } else {
+            htmltools::save_html(
+              suppressWarnings(
+                Hmisc::html(Hmisc::describe(data_choice(), descript=input$datafile$name))
+              ), 
+              file = file)          }
         }
       }
     )
