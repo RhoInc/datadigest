@@ -2,10 +2,10 @@
 % Please edit documentation in R/explorerApp.R
 \name{explorerApp}
 \alias{explorerApp}
-\title{Codebook RStudi Mini-app}
+\title{Codebook Explorer Shiny App and RStudio Add-in}
 \usage{
 explorerApp()
 }
 \description{
-Codebook RStudi Mini-app
+Codebook Explorer Shiny App and RStudio Add-in
 }
