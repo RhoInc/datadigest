@@ -1,5 +1,4 @@
-
-#' Codebook RStudi Mini-app
+#' Codebook Explorer Shiny App and RStudio Add-in
 #' @import shiny
 #' @import htmltools
 #' @importFrom Hmisc html describe
