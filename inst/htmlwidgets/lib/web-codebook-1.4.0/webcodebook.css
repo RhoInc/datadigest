@@ -1,0 +1,617 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans: 400,300);
+
+/*------------------------------------------------------------------------------------------------\
+  General
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook {
+        position: relative;
+        width: 1024px;
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        z-index: 10;
+    }
+    .web-codebook > * {
+        display: block;
+        width: 100%;
+    }
+    .web-codebook .hidden {
+        display: none !important;
+    }
+    .web-codebook #loading-indicator {
+        position: absolute;
+        height: 100%;
+        z-index: 9999;
+        background-color:rgba(255, 255, 255, 0.9);
+    }
+    .web-codebook #loading-indicator .spinner {
+        position: absolute;
+            top: 128px;
+            left: 480px;
+        border: 12.5px solid #008CBA;
+            border-top: 12.5px solid #999;
+            border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        z-index: 9999;
+    }
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .web-codebook > .section {
+        margin-top: 0.5em;
+    }
+    .web-codebook ul    {
+        padding: 0;
+        margin: 0;
+    }
+    .web-codebook .clear-highlight {
+        margin-right: 1em
+    }
+
+/*------------------------------------------------------------------------------------------------\
+  Status section
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook .status{
+        padding: .1em;
+        margin: .5em 0 .5em 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        border-bottom: 1px dotted #999;
+    }
+
+    .web-codebook .status.error{
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+/*------------------------------------------------------------------------------------------------\
+    Instructions and Title layout
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .wcb-nav{
+    margin-top: 0.1em
+}
+
+.web-codebook .title .file{
+    font-weight: 500;
+    font-size: 1.4em;
+}
+
+.web-codebook .title .countSummary    {
+    padding-left: 1em;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.web-codebook .title .countSummary.warn{
+    color: red;
+}
+
+.web-codebook .highlightCount{
+    font-size: 0.8em;
+    color: #666;
+}
+
+.web-codebook .instructions .control {
+    padding-left: 0.5em;
+}
+
+.web-codebook span.highlightLegend{
+    background-color: orange;
+}
+
+/*------------------------------------------------------------------------------------------------\
+    Controls layout
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .controls {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px dashed #ccc;
+    margin-bottom: 0.5em;
+    overflow: hidden;
+}
+
+.web-codebook .controls > * {
+    margin: .25em .5em;
+}
+
+.web-codebook .controls .controls-title{
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+.web-codebook .controls .data-listing-toggle {
+    display: inline-block;
+}
+
+.web-codebook .controls .group-select span {
+    padding-right: 5px;
+}
+
+.web-codebook .controls .group-select,
+.web-codebook .controls .chart-toggle{
+    display: inline-block;
+    padding-right: 1em;
+}
+
+.web-codebook .controls button, .web-codebook .instructions button, .web-codebook .title button
+{
+    margin-right: 0.5em;
+    background-color: white;
+    border: 2px solid #008CBA;
+    border-radius: 4px;
+    padding: .2em .4em;
+}
+
+.web-codebook .controls button:hover,
+.web-codebook .instructions button:hover,
+.web-codebook .title button:hover{
+    cursor: pointer;
+    background-color: #008CBA;
+    color: white;
+}
+
+.web-codebook .controls button.control-toggle
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 0.5em;
+}
+
+.web-codebook .controls span.update-controls
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-top: 0.5em;
+    margin-right: 0.25em;
+    font-size: 150%;
+    cursor: pointer;
+}
+
+.web-codebook .controls span.update-controls:hover
+{
+    font-weight: bold;
+}
+
+.web-codebook .controls .custom-filters ul li {
+    margin: 0 3px 5px 0;
+}
+
+.web-codebook .controls .custom-filters ul li.active > a > label,
+.web-codebook .controls .custom-filters ul li:hover > a > label {
+    color: white;
+}
+
+.web-codebook .controls .custom-filters ul li .filterType {
+    font-size: 0.8em
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom * {
+    display: block;
+    min-width: 50px;
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom span.filterLabel * {
+    display: inline-block;
+}
+
+.web-codebook .controls .custom-filters ul li.filterCustom span.filter-label {
+	display: block;
+	font-size: .75em;
+	color: #777;
+	margin-bottom: 3px;
+}
+
+
+
+/*------------------------------------------------------------------------------------------------\
+    Row layout
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .summaryTable > * {
+}
+
+.web-codebook .summaryTable .summaryText {
+    display: block;
+    clear: both;
+}
+
+.web-codebook .summaryTable .variable-row {
+  position: relative;
+    margin-top: 0.3em;
+    display: block;
+    border: 1px solid #999;
+}
+
+.web-codebook .summaryTable .variable-row .section {
+    display: block;
+    padding-left:0.2em;
+}
+
+.web-codebook .summaryTable .variable-row.hiddenDetails .row-chart,
+.web-codebook .summaryTable .variable-row.hiddenDetails .row-details,
+.web-codebook .summaryTable .variable-row.hiddenDetails .row-meta {
+    display: none;
+}
+
+/**-------------------------------------------------------------------------------------------\
+    Header layout
+\-------------------------------------------------------------------------------------------**/
+
+.web-codebook .summaryTable .variable-row .row-head {
+    background: #eee;
+    padding: 0.1em;
+    overflow: hidden;
+}
+
+.web-codebook .summaryTable .variable-row .row-head > * {
+    display: inline-block;
+}
+
+/**-------------------------------------------------------------------------------------------\
+    Header layout - Toggle
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-title{
+  padding-right: 1em;
+  width:100%;
+}
+
+.web-codebook .summaryTable .variable-row .row-title > * {
+    display: inline-block;
+}
+
+.web-codebook .summaryTable .variable-row .row-title .row-toggle{
+    font-size: 0.8em;
+    cursor: pointer;
+    vertical-align: top;
+    color: #999;
+    padding-right: 0.5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-title .row-toggle:hover{
+    background: #eee;
+}
+
+/**-------------------------------------------------------------------------------------------\
+    Header - Title layout
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-title .title-span{
+    font-weight: bold;
+
+}
+
+.web-codebook .summaryTable .variable-row .row-title .label-span{
+    padding-left: 0.2em;
+    font-size: 0.8em;
+}
+
+/**-------------------------------------------------------------------------------------------\
+    Header - Type Tag
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-title .type{
+  background-color:white;
+  border:1px solid black;
+  border-radius:2px;
+  padding: 2px 4px 2px 4px;
+  margin-left: 0.4em;
+  font-size: 0.6em;
+  vertical-align: middle;
+  float:right;
+}
+
+.web-codebook .summaryTable .variable-row .row-title .spark{
+  float:right;
+}
+
+/**-------------------------------------------------------------------------------------------\
+    Header - Missing Count
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-title .percent-missing {
+
+  margin-right: 0.4em;
+  font-size: 0.8em;
+  vertical-align: middle;
+  float:right;
+}
+
+
+/**-------------------------------------------------------------------------------------------\
+    Row Details - layout
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-details{
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  padding-bottom:0.2em;
+}
+.web-codebook .summaryTable .variable-row .row-details ul {
+  display:inline-block;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul.values {
+  float:right;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div {
+    display: block;
+    text-align: left;
+    width:100%;
+    padding-right: .4em;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div.wcb-label {
+    display: inline-block;
+    font-size: 0.65em;
+    color: #999;
+    min-width: 1em;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div.value {
+    font-size: 0.85em;
+    color: #333;
+    vertical-align:bottom;
+}
+
+.web-codebook .summaryTable .variable-row .row-details ul li div.details {
+    padding-right: .2em;
+    font-size: 0.5em;
+    cursor: pointer;
+    color: blue;
+}
+
+
+
+/**-------------------------------------------------------------------------------------------\
+    Chart layout
+\-------------------------------------------------------------------------------------------**/
+
+.web-codebook .summaryTable .variable-row .row-controls > * {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart div.missingText{
+    padding: .5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart p.panel-label{
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.web-codebook .summaryTable g.bar-group.highlighted rect{
+    fill: orange;
+}
+
+.web-codebook .summaryTable g.bar-group rect:hover {
+    cursor: pointer;
+    stroke-width: 3px;
+    stroke: black;
+}
+
+
+.web-codebook .summaryTable .variable-row .row-chart .legend {
+    margin-left: 1em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart .svg-tooltip {
+    display: none;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart .svg-tooltip.active {
+    display: block;
+}
+
+/**-------------------------------------------------------------------------------------------\
+    Metadata - layout
+\-------------------------------------------------------------------------------------------**/
+.web-codebook .summaryTable .variable-row .row-meta{
+  border-top:1px solid #ccc;
+  padding-bottom:0.2em;
+}
+.web-codebook .summaryTable .variable-row .row-meta ul {
+  display:inline-block;
+}
+
+.web-codebook .summaryTable .variable-row .row-meta ul li {
+    display: inline-block;
+    background-color:white;
+    border:1px solid black;
+    border-radius:2px;
+    padding: 2px 4px 2px 4px;
+    margin-left: 0.4em;
+    font-size: 0.6em;
+
+}
+.web-codebook .summaryTable .variable-row .row-meta ul li.details {
+    border:none;
+}
+
+.web-codebook .summaryTable .variable-row .row-meta ul li div {
+  display: inline-block;
+    text-align: left;
+    margin: .1em;
+    vertical-align: middle;
+
+}
+
+.web-codebook .summaryTable .variable-row .row-meta ul li div.wcb-label {
+    display: inline-block;
+    font-size: 0.65em;
+    color: #999;
+    min-width: 1em;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+
+}
+
+.web-codebook .summaryTable .variable-row .row-meta ul li div.value {
+    display: inline-block;
+    font-size: 0.85em;
+    color: #333;
+}
+
+/*------------------------------------------------------------------------------------------------\
+    Data listing
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook .dataListing {
+
+    }
+
+    .web-codebook .dataListing .description {
+        padding: 0 5px 0 5px;
+    }
+
+    .web-codebook    .dataListing tbody tr.highlight {
+        background: orange !important;
+    }
+
+
+/***--------------------------------------------------------------------------------------\
+    Nav
+\--------------------------------------------------------------------------------------***/
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs {
+        list-style-type: none;
+        overflow: hidden;
+        background-color: black;
+        padding: 0;
+    }
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs li {
+        float: left;
+        cursor: pointer;
+        border: 2px solid black;
+        height: 2.5em;
+        padding: 0 10px 0 10px;
+        line-height: 2.5em;
+        text-align: center;
+    }
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs li a {
+        display: block;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+    }
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs li:hover {
+        background-color: #777;
+        border: 2px solid #777;
+    }
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs li.settings {
+        float: right;
+    }
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs li.active, ul.wcb-nav-tabs li.active:hover {
+        background-color: white;
+        border: 2px solid black;
+
+    }
+
+    .web-codebook .wcb-nav ul.wcb-nav-tabs li.active a, ul.wcb-nav-tabs li.active:hover a{
+        color: black;
+    }
+
+/*------------------------------------------------------------------------------------------------\
+    Settings
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook .settings table.column-table {
+        border-collapse: collapse;
+    }
+
+    .web-codebook .settings table.column-table thead tr {
+        border-bottom: 2px solid black;
+    }
+
+    .web-codebook .settings table.column-table tbody tr {
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .web-codebook .settings table.column-table th {
+        text-align: center;
+        padding: 2px 10px;
+    }
+
+    .web-codebook .settings table.column-table th.Column {
+        text-align: right;
+    }
+
+    .web-codebook .settings table.column-table td {
+        text-align: center;
+        padding: 2px 10px;
+    }
+
+    .web-codebook .settings table.column-table td.Column {
+        text-align: right;
+    }
+
+/*------------------------------------------------------------------------------------------------\
+    Data Listing
+\------------------------------------------------------------------------------------------------*/
+
+    .web-codebook .fileListing tr.selected{
+        background: #008CBA;
+        color: white;
+    }
+
+    .web-codebook .fileListing td.link{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    }
+
+/*------------------------------------------------------------------------------------------------\
+    Chart Maker
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .chartMaker.section .cm-controls .control{
+    padding-right: .5em;
+}
+
+.web-codebook .chartMaker.section .cm-chart .wc-small-multiples .wc-chart {
+    border: 1px solid #999;
+    padding: 0.2em;
+    margin: 0.2em;
+}
+
+.web-codebook .chartMaker.section .cm-chart .wc-small-multiples .wc-chart .wc-chart-title{
+    background: #eee;
+    padding: 0.1em;
+    font-size: 1.2em;
+}
