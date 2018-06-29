@@ -14,7 +14,7 @@ HTMLWidgets.widget({
 
         console.log(rSettings)
 
-        el.innerHTML = "";
+        el.innerHTML = "<div class='codebook'></div>";
 
         rSettings.data = HTMLWidgets.dataframeToD3(rSettings.data);
 
@@ -28,7 +28,7 @@ HTMLWidgets.widget({
 
         console.log(rSettings.data);
 
-        chart = webcodebook.createChart(el, {});
+        chart = webcodebook.createChart('.codebook', {});
         chart.init(rSettings.data);
       },
 
