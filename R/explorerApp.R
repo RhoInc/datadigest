@@ -16,18 +16,6 @@ explorerApp <- function(){
   )
   
   server = function(input, output, session){
-    
-   # wait a second and add a file button
-    # Sys.sleep(1)
-    # insertUI(
-    #   selector="div.explorer div.instructions.section",
-    #   where="beforeEnd",
-    #   ui=tagList(
-    #     fileInput('datafile','Upload file(s)', accept = c('.sas7bdat','.csv'), multiple=TRUE),
-    #     actionButton('clear','Clear file list')
-    #   )
-    # )
-    
   
     # initiate reactive values
     dd <- reactiveValues(data=NULL, 
