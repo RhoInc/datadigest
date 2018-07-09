@@ -9,7 +9,6 @@
 #'
 #' @import htmlwidgets
 #' @importFrom tibble is_tibble
-#'
 #' @export
 codebook <- function(data) {
 
