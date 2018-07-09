@@ -13,6 +13,7 @@
 #' explorer(data = c("mtcars", "iris"))
 #'
 #' @import htmlwidgets
+#' @importFrom jsonlite toJSON
 #'
 #' @export
 explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
