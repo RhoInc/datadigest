@@ -21,6 +21,9 @@ Imports: htmlwidgets,
     htmltools,
     haven,
     jsonlite, 
-    tibble
+    tibble,
+    datasets
+URL: https://github.com/RhoInc/codebook
+BugReports: https://github.com/RhoInc/codebook/issues
 
 

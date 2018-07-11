@@ -14,6 +14,7 @@
 #'
 #' @import htmlwidgets
 #' @importFrom jsonlite toJSON
+#' @import datasets
 #'
 #' @export
 explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
