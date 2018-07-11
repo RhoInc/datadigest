@@ -4628,7 +4628,10 @@
         .select('tbody')
         .selectAll('tr')
         .filter(function(f) {
-          return f.path === explorer.current.path;
+          return (
+            f[explorer.config.labelColumn] ===
+            explorer.current[explorer.config.labelColumn]
+          );
         })
         .classed('selected', true);
 
