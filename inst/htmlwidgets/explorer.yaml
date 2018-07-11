@@ -5,7 +5,7 @@ dependencies:
    script: d3.min.js
  - name: webcharts
    version: 1.6.1
-   src: htmlwidgets/lib/webcharts-1.6.1
+   src: htmlwidgets/lib/webcharts-1.10.0
    script: webcharts.js
    stylesheet: webcharts.css
  - name: web-codebook
