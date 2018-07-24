@@ -12,7 +12,7 @@ devtools::install_github('RhoInc/codebook')
 
 ### Use
 
-1. Produce an interactive codebook to explore in the browser or an Rmarkdown or HTML document:
+1. Produce an interactive codebook to explore in the RStudio viewer, an internet browser, or an Rmarkdown or HTML document:
 ```r
 codebook(data = mtcars)
 ```
