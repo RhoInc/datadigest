@@ -14,7 +14,7 @@ devtools::install_github('RhoInc/codebook')
 
 1. Produce an interactive codebook to explore in the browser or an Rmarkdown or HTML document:
 ```r
-codebook(mtcars)
+codebook(data = mtcars)
 ```
 
 2. Run the codebook Shiny app*, which will produce a codebook from data from your R environment or a file upload.  Decide on a format (interactive summary vs. static summary from **Hmisc::describe**) and download the codebook as an HTML file. 
@@ -24,7 +24,7 @@ codebookApp()
 
 3. Generate the interactive codebook explorer to explore multiple data files in the browser or an Rmarkdown or HTML document:
 ```r
-explorer(list(mtcars, iris))
+explorer(data = list(mtcars, iris))
 ```
 
 4. Run the explorer Shiny app*, which will produce the codebook explorer.  If available, data from the R session will be used.  Otherwise, a set of example datasets will populate the explorer.  The user may also upload one or more files to the application.
