@@ -10,9 +10,14 @@ codebook(data)
 \item{data}{A data frame.}
 }
 \description{
-This function creates an interactive codebook using R htmlwidgets.
+This function creates an interactive codebook from a user specified data frame using.using R htmlwidgets.  
+The codebook can be explored using the RStudio viewer or a web browser.  
+The codebook can also be embedded in an R Markdown document or saved as a standalone HTML page.
 }
 \examples{
 codebook(data=mtcars)
 
+}
+\seealso{
+explorer
 }

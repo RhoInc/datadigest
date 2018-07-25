@@ -1,4 +1,9 @@
 #' Codebook Shiny App and RStudio Add-in
+#' 
+#' The codebook shiny application produces an interactive codebook using data from your R environment 
+#' or a file upload. Optionally select to view a static summary of the data using Hmisc::describe(). 
+#' The resulting codebook (interactive or static) may be downloaded as an HTML file.
+#' 
 #' @import shiny
 #' @import htmltools
 #' @importFrom haven read_sas
@@ -138,3 +143,4 @@ codebookApp <- function(){
 
 
 
+#' @source Rho's web-codebook JS library: \url{https://github.com/RhoInc/web-codebook}.
