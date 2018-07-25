@@ -25,5 +25,6 @@ Imports: htmlwidgets,
     datasets
 URL: https://github.com/RhoInc/codebook
 BugReports: https://github.com/RhoInc/codebook/issues
-
-
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
