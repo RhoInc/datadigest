@@ -6,17 +6,27 @@
 #' 
 #'
 #' @param data  A data frame.
+#' @param settings Optional list of custom settings.   
+#' 
+#' @details 
+#' \describe{
+#'   \item{settings}{
+#'   If provided, the list of custom settings will be converted to JSON using \code{jsonlite::toJSON}. 
+#'   Details on configuration of the settings object can be found at \url{https://github.com/RhoInc/web-codebook/wiki/Configuration}.  
+#'   }
+#' }
 #'
 #' @examples
 #' codebook(data=mtcars)
 #'
 #' @import htmlwidgets
 #' @importFrom tibble is_tibble
+#' @importFrom jsonlite toJSON
 #' 
 #' @seealso explorer
 #' 
 #' @export
-codebook <- function(data) {
+codebook <- function(data, settings = NULL) {
 
   if(tibble::is_tibble(data)){
     warning("Codebook may not work as expected on objects of class `tbl_df` that contain list-columns.")  
@@ -24,7 +34,8 @@ codebook <- function(data) {
   
   # forward options using x
   rSettings = list(
-    data=data
+    data=data,
+    settings=jsonlite::toJSON(settings)
   )
 
   # create widget

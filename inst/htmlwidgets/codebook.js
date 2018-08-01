@@ -27,8 +27,8 @@ HTMLWidgets.widget({
         })
 
         console.log(rSettings.data);
-
-        chart = webcodebook.createChart('.codebook', {});
+ 
+        chart = webcodebook.createChart('.codebook', rSettings.settings)
         chart.init(rSettings.data);
       },
 
