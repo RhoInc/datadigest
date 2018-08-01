@@ -80,6 +80,9 @@ Data Listing view, and in the Charts view.
 ### codebook()
 
 Produce an interactive codebook to explore in the RStudio viewer or an Rmarkdown or HTML document.  The user simply passes a data frame via the ```data``` argument.
+
+Optionally, advanced users can customize the appearance and behavior of the interactive codebook by providing a custom settings object. The user should provide an R list that will then be converted to a json object using the ```toJSON()``` function. Full specifications for the json configuration object are provided in the [web-codebook wiki](https://github.com/RhoInc/web-codebook/wiki/Configuration).
+
 ```r
 ### Generate a codebook by specifying a data frame of choice.
 codebook(data = mtcars)
