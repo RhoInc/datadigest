@@ -1,37 +1,32 @@
 # Codebook
 
-## Create Rho's interactive codebook from R.
+# Overview
 
-### Codebook is an R package built using the htmlwidgets framework.  Codebook provides an R interface for Rho's **web-codebook** Javascript widget. The underlying tool is built using Webcharts and d3.js. Using this tool, the user can view and explore summary information about their dataset.  The R interface allows the analyst to interactively explore data within their typical workflow and working evironment. 
+The **codebook** package provides a simple interactive framework for exploring data. 
 
-### Installation:
+You can:
+- Try it out at the [demo site](https://rhoinc.github.io/viz-library/examples/0009-web-codebook-demo/example.html)
+- Read more in the [manuscript](https://phusewiki.org/docs/2018_US%20Connect18/DV%20STREAM/dv12%20final.pdf)
+- Get technical details in the [wiki](https://github.com/RhoInc/codebook/wiki) 
+- Check out the associated [web-codebook](https://github.com/RhoInc/web-codebook) github repo
+- See a screenshot below
+
+![codebook image](https://user-images.githubusercontent.com/14199771/43269882-ccc06a26-90c1-11e8-9026-a91d67a57fcf.png)
+
+## Usage
+
+Installing and using the codebook typically only requires a few lines of code. To summarize a single file: 
 
 ```r
-devtools::install_github('RhoInc/codebook')
-```
-
-### Use
-
-1. Produce an interactive codebook to explore in the RStudio viewer, an internet browser, or an Rmarkdown or HTML document:
-```r
+devtools::install_github("RhoInc/codebook")
+library("codebook")
 codebook(data = mtcars)
 ```
 
-2. Run the codebook Shiny app*, which will produce a codebook from data from your R environment or a file upload.  Decide on a format (interactive summary vs. static summary from **Hmisc::describe**) and download the codebook as an HTML file. 
+Or to explore all of the data loaded in the current R session: 
+
 ```r
-codebookApp()
+devtools::install_github("RhoInc/codebook")
+library("codebook")
+explorer(data = NULL, addEnv = TRUE)
 ```
-
-3. Generate the interactive codebook explorer to explore multiple data files in the browser or an Rmarkdown or HTML document:
-```r
-explorer(data = list(mtcars, iris))
-```
-
-4. Run the explorer Shiny app*, which will produce the codebook explorer.  If available, data from the R session will be used.  Otherwise, a set of example datasets will populate the explorer.  The user may also upload one or more files to the application.
-```r
-explorerApp()
-```
-
-*If you use RStudio, this app will be available to you as an RStudio addin upon package installation. You can access the addin from the RStudio toolbar.
-
-Please see the [wiki](https://github.com/RhoInc/codebook/wiki) for more information about the **codebook** package.
