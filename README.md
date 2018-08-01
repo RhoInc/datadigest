@@ -1,8 +1,6 @@
 # Codebook
 
-The **codebook** package provides a simple interactive framework for exploring data. 
-
-You can:
+The **codebook** package provides a simple interactive framework for exploring data. You can:
 - Try it out at the [demo site](https://rhoinc.github.io/viz-library/examples/0009-web-codebook-demo/example.html)
 - Run it yourself using the [sample code below](https://github.com/RhoInc/codebook#usage). 
 - Read more in the [manuscript](https://phusewiki.org/docs/2018_US%20Connect18/DV%20STREAM/dv12%20final.pdf)
