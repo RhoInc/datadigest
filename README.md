@@ -25,5 +25,5 @@ Or to explore all of the data loaded in the current R session:
 ```r
 devtools::install_github("RhoInc/codebook")
 library("codebook")
-explorer(data = NULL, addEnv = TRUE)
+explorer(demo=T)
 ```
