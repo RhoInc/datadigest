@@ -27,10 +27,19 @@
 #' 
 #' @export
 codebook <- function(data, settings = NULL) {
-
+  
   if(tibble::is_tibble(data)){
     warning("Codebook may not work as expected on objects of class `tbl_df` that contain list-columns.")  
   }
+  
+  ## convert NA to empty string for appropriate JS handling 
+  for (i in 1:ncol(data)){
+    if (is.factor(data[,i])){
+      data[,i] <- as.character(data[,i])
+    }
+  }
+  data[is.na(data)] <- ""
+ 
   
   # forward options using x
   rSettings = list(

@@ -51,11 +51,11 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
   } else { 
     namesList <- data
   }
-
+ 
   # (1) Initialize the settings with the raw values passed to the r function
   rSettings = list(
     rParams=list(
-      data = data,
+   #   data = data,
       addEnv = addEnv
     ),
     settings = list(
@@ -70,16 +70,28 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
     if (is.list(fileList)){
       for (i in seq_along(fileList)){
         df <- fileList[[i]]
+        for (j in 1:ncol(df)){
+          if (is.factor(df[,j])){
+            df[,j] <- as.character(df[,j])
+          }  
+        }
+        df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
           File = namesList[i],
           Rows = nrow(df),
           Columns = ncol(df),
           json = jsonlite::toJSON(df)
         )
-      }      
+      }  
     } else if (is.vector(fileList)){
       for (i in seq_along(fileList)){
         df <- get(fileList[i])
+        for (j in 1:ncol(df)){
+          if (is.factor(df[,j])){
+            df[,j] <- as.character(df[,j])
+          }
+        }
+        df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
           File = fileList[i],
           Rows = nrow(df),
