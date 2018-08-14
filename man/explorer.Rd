@@ -14,11 +14,26 @@ explorer(data = NULL, addEnv = TRUE, demo = FALSE)
 \item{demo}{Logical. Indicates whether to display demo data frames.  If \code{TRUE}, \code{dataList} and \code{addEnv} settings will be ignored.  Defaults to \code{demo=FALSE}.}
 }
 \description{
-This function creates a series of interactive codebook using R htmlwidgets.
+This function produces an interactive codebook explorer using R htmlwidgets.
+The interactive codebook explorer allows the user to explore multiple data frames within 
+the RStudio viewer or a web browser.  The explorer can also be embedded in an R Markdown document or 
+saved as a standalone HTML page.
 }
 \examples{
+### Generate explorer using all data loaded into R session (default).
+explorer(data = NULL, addEnv = TRUE)
+
+### Provide a list of (optionally named) data frames.
 explorer(data = list(Cars = mtcars, Iris = iris))
 
-explorer(data = c("mtcars", "iris"))
+### Alternatively, provide data frames currently loaded in R session as a character vector.
+explorer(data = c("mtcars","iris"))
 
+### Generate explorer using data from the datasets package.
+explorer(demo = TRUE)
+
+
+}
+\seealso{
+codebook
 }

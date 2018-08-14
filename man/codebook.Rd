@@ -4,15 +4,30 @@
 \alias{codebook}
 \title{Create an interactive codebook}
 \usage{
-codebook(data)
+codebook(data, settings = NULL)
 }
 \arguments{
 \item{data}{A data frame.}
+
+\item{settings}{Optional list of custom settings.}
 }
 \description{
-This function creates an interactive codebook using R htmlwidgets.
+This function creates an interactive codebook from a user specified data frame using.using R htmlwidgets.  
+The codebook can be explored using the RStudio viewer or a web browser.  
+The codebook can also be embedded in an R Markdown document or saved as a standalone HTML page.
+}
+\details{
+\describe{
+  \item{settings}{
+  If provided, the list of custom settings will be converted to JSON using \code{jsonlite::toJSON}. 
+  Details on configuration of the settings object can be found at \url{https://github.com/RhoInc/web-codebook/wiki/Configuration}.  
+  }
+}
 }
 \examples{
 codebook(data=mtcars)
 
+}
+\seealso{
+explorer
 }

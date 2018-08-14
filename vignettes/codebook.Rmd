@@ -1,0 +1,132 @@
+---
+title: "Overview of the codebook package"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true 
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+
+The **codebook** package provides a simple interactive framework for exploring data.  The package serves as an R interface for Rho's [web-codebook](https://github.com/RhoInc/web-codebook) JavaScript library. This tool provides a concise summary of every variable in a data frame and includes interactive features such as real-time filters, grouping, and highlighting. The R interface allows the analyst to interactively explore datasets within the typical analysis workflow and working environment.  **codebook** has been built using the [htmlwidgets](htmlwidgets.org) framework.
+
+## Background
+
+The codebook tool was developed to aid in the exploration of clinical trial data.  Any given trial requires vigorous monitoring and exploration of the incoming data.  These technical tasks are imperative for ensuring data quality and proper interpretation of study results. The interactive codebook was designed to streamline data exploration for any data set.
+
+The interactive codebook builds upon the existing use of statistical graphics and data visualization in clinical trials by creating a simple interactive framework for exploring data.  In particular, codebook takes inspiration from Frank Harrell's excellent `describe` method from the [hmisc R package](https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf), as well as previous work in SAS ([Calatroni, 2007](http://graphics.rhoworld.com/pubs/SCT2007_Calatroni.pdf) and [Rosenbalm, 2017](https://github.com/RhoInc/sas-codebook)) to create concise summaries of every variable in a dataset with minimal user configuration.  Like its static codebook predecessors, the web-codebook includes paneled displays, comprehensive data listings, and charts for each variable type, but it expands on these tools by providing interactivity via dynamic filters, collapsible/expandable sections, across-chart data linking, and customizable controls. The resulting tool is well suited for use in many aspects of clinical trial research, including data exploration, anomaly detection, key end point and safety monitoring surveillance.
+
+## R package
+The **codebook** package consists of two key functions: ```codebook()``` and ```explorer()```.  ```codebook()``` delivers an interactive interface for a single data frame. ```explorer()``` extends this functionality, allowing the user to navigate through multiple data frames. While ```codebook()``` and ```explorer()``` can be loaded as HTML widgets using their respective R functions, the package also includes a dedicated Shiny application for each. The shiny applications offer easy access to data currently loaded in the R session, the ability to upload data files, and/or the ability to download a static or interactive data summary. Following package installation, RStudio users may access the two applications via the toolbar as RStudio add-ins.
+
+## Codebook data summaries
+Together, the codebook and explorer tools have 5 views that share interactive functionality:
+
+### 1. CODEBOOK VIEW
+The Codebook view shows a concise summary for each variable in the loaded data set. The summaries are
+collapsed by default, with only the variable name, label (if any), distribution and missing data summary (if any) shown.
+This view provides a concise summary of the entire data set. 
+
+Users can click any variable to see additional details. Appropriate summary statistics, frequency tables and charts are
+provided. Histograms with box plots are drawn for continuous variables and bar charts for
+categorical variables. Variable level metadata is also shown beneath the chart if provided by the user.
+
+### 2. DATA LISTING VIEW
+The Data Listing view provides a simple tabular output so that the user can interact with the raw data. The listing is
+exportable, sortable and searchable.  
+
+### 3. SETTINGS VIEW
+The Settings view lets users customize labels, hide variables and specify which columns should be used as
+interactive groups and filters. 
+
+### 4. CHARTS VIEW
+The Charts view lets users interactively create simple bivariate data visualizations. The system automatically uses an
+appropriate visualization based on the types of the x and y variables selected.
+
+### 5. FILE EXPLORER VIEW (only available in the explorer tool)
+The optional File Explorer view provides a simple method to load codebooks for multiple files (e.g. all analysis data
+sets for a study) from the same web page. Clicking a file name loads the codebook, and the user can also view the
+Data Listing and Charts for the selected file as desired.
+
+### Interactive Features
+Interactive functionality includes:
+  - *Navigation Bar*: The navigation bar allows users to easily move between views.  
+  - *Grouping*: Any variable can be used to group the data in to strata. When a grouping variable is selected,
+one chart per group level is drawn for the detailed charts in the Codebook view and in the Charts section.
+  - *Filters*: Filters can be created for any categorical data in the data set. Whenever a user changes the filter it
+is applied on the Codebook, Data Listing and Charts Views in real time. 
+  - *Status Summary*: A data summary, giving number of columns, rows and highlighted records is given in the
+title of the codebook, and is updated whenever filters or highlighting changes.
+  - *Highlight a Subpopulation*: Users can click bars in the detail view of the codebook to highlight the
+associated records. In particular, the participants are highlighted in other charts in the Codebook view, in the
+Data Listing view, and in the Charts view.  
+
+
+## Functions
+
+```codebook()``` and ```codebookApp()``` produce interactive data summaries of a user-specified data frame.  These summaries contain the Codebook view, Data Listing view, Settings view, Charts view described [here](https://github.com/RhoInc/codebook/wiki/Codebook-Data-Summaries).
+
+### codebook()
+
+Produce an interactive codebook to explore in the RStudio viewer or an Rmarkdown or HTML document.  The user simply passes a data frame via the ```data``` argument.
+
+Optionally, advanced users can customize the appearance and behavior of the interactive codebook by providing a custom settings object. The user should provide an R list that will then be converted to a json object using the ```toJSON()``` function. Full specifications for the json configuration object are provided in the [web-codebook wiki](https://github.com/RhoInc/web-codebook/wiki/Configuration).
+
+```r
+### Generate a codebook by specifying a data frame of choice.
+codebook(data = mtcars)
+```
+
+### codebookApp()
+
+Run the codebook Shiny application*.  The codebook shiny application, which will produce an interactive codebook using data from your R environment or a file upload.  Optionally select to view a static summary of the data using ```Hmisc::describe()```.  The resulting codebook (interactive or static) may be downloaded as an HTML file. 
+
+```r
+### Run the codebook Shiny application in the browser.
+codebookApp()
+```
+
+```explorer()``` and ```explorerApp()``` produce interactive data summaries of one or more user-specified data frames.  These summaries contain all 5 data summary views described [here](https://github.com/RhoInc/codebook/wiki/Codebook-Data-Summaries).
+
+### explorer()
+
+Produce an interactive codebook explorer to explore data frames within the RStudio viewer, a web browser, or an Rmarkdown or HTML document.  
+```r
+### Generate explorer using all data loaded into R session (default).
+explorer(data = NULL, addEnv = TRUE)
+
+### Provide a list of (optionally named) data frames.
+explorer(data = list(Cars = mtcars, Iris = iris))
+
+### Alternatively, provide data frames currently loaded in R session as a character vector.
+explorer(data = c("mtcars","iris"))
+
+### Generate explorer using data from the datasets package.
+explorer(demo = TRUE)
+```
+
+### explorerApp()
+
+Run the explorer Shiny application.  The explorer shiny application generates an interactive codebook explorer using all datasets currently loaded in the user's R session.  If no data are available, the app is populated using the data from the ```datasets``` package. The user can upload one or more sas7bdat or csv files by navigating to a directory and selecting individual file(s).
+
+```r
+### Load explorer Shiny app in the browser.
+explorerApp()
+```
+
+### Shiny bindings for ```codebook()``` and ```explorer()```
+
+Both tools can be embedded in a Shiny application using the available Shiny output and render functions. 
+
+*If you use RStudio, these apps will be available to you as RStudio addins upon package installation. You can access the addins from the RStudio toolbar.

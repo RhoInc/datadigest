@@ -1,6 +1,9 @@
 #' Create an interactive codebook
 #'
-#' This function creates a series of interactive codebook using R htmlwidgets.
+#' This function produces an interactive codebook explorer using R htmlwidgets.
+#' The interactive codebook explorer allows the user to explore multiple data frames within 
+#' the RStudio viewer or a web browser.  The explorer can also be embedded in an R Markdown document or 
+#' saved as a standalone HTML page.
 #'
 #' @param data  A list of (optionally named) data frames. Also accepts a character vector of data frame names (must be loaded in environment).
 #' @param addEnv  Logical. Indicates whether to add all data frames in current environemnt to explorer. Defaults to \code{addEnv=TRUE}.
@@ -8,10 +11,21 @@
 
 #'
 #' @examples
-#' explorer(data = list(Cars = mtcars, Iris = iris))
-#' 
-#' explorer(data = c("mtcars", "iris"))
+#' ### Generate explorer using all data loaded into R session (default).
+#' explorer(data = NULL, addEnv = TRUE)
 #'
+#' ### Provide a list of (optionally named) data frames.
+#' explorer(data = list(Cars = mtcars, Iris = iris))
+#'
+#' ### Alternatively, provide data frames currently loaded in R session as a character vector.
+#' explorer(data = c("mtcars","iris"))
+#'
+#' ### Generate explorer using data from the datasets package.
+#' explorer(demo = TRUE)
+#' 
+#' 
+#' @seealso codebook
+#' 
 #' @import htmlwidgets
 #' @importFrom jsonlite toJSON
 #' @import datasets
@@ -37,11 +51,11 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
   } else { 
     namesList <- data
   }
-
+ 
   # (1) Initialize the settings with the raw values passed to the r function
   rSettings = list(
     rParams=list(
-      data = data,
+   #   data = data,
       addEnv = addEnv
     ),
     settings = list(
@@ -56,16 +70,28 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
     if (is.list(fileList)){
       for (i in seq_along(fileList)){
         df <- fileList[[i]]
+        for (j in 1:ncol(df)){
+          if (is.factor(df[,j])){
+            df[,j] <- as.character(df[,j])
+          }  
+        }
+        df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
           File = namesList[i],
           Rows = nrow(df),
           Columns = ncol(df),
           json = jsonlite::toJSON(df)
         )
-      }      
+      }  
     } else if (is.vector(fileList)){
       for (i in seq_along(fileList)){
         df <- get(fileList[i])
+        for (j in 1:ncol(df)){
+          if (is.factor(df[,j])){
+            df[,j] <- as.character(df[,j])
+          }
+        }
+        df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
           File = fileList[i],
           Rows = nrow(df),
