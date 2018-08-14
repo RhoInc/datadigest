@@ -1,7 +1,7 @@
 Package: codebook
 Type: Package
 Title: Create an Interactive Codebook from R
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
 	person("Becca", "Krouse", email = "rebecca_krouse@rhoworld.com", role = c("cre","aut")),
 	person("Spencer", "Childress", role = c("aut")),
