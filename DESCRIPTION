@@ -1,4 +1,4 @@
-Package: codebook
+Package: datadigest
 Type: Package
 Title: Create an Interactive Codebook from R
 Version: 0.3.0
@@ -7,7 +7,7 @@ Authors@R: c(
 	person("Spencer", "Childress", role = c("aut")),
 	person("Jeremy", "Wildfire", role = c("aut")))
 Maintainer: Becca Krouse <rebecca_krouse@rhoworld.com>
-Description: This package is an R interface for Rho's web-codebook JavaScript charting library. The user can create an htmlwidgets chart or utilize the built-in RStudio add-in to create and save a chart instance.
+Description: datadigest provides an R interface for Rho's web-codebook JavaScript charting library. The user can create an htmlwidgets chart or utilize the built-in RStudio add-in to create and save a chart instance.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -23,8 +23,8 @@ Imports: htmlwidgets,
     jsonlite, 
     tibble,
     datasets
-URL: https://github.com/RhoInc/codebook
-BugReports: https://github.com/RhoInc/codebook/issues
+URL: https://github.com/RhoInc/datadigest
+BugReports: https://github.com/RhoInc/datadigest/issues
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

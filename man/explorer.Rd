@@ -2,7 +2,7 @@
 % Please edit documentation in R/explorer.R
 \name{explorer}
 \alias{explorer}
-\title{Create an interactive codebook}
+\title{Create an interactive codebook explorer}
 \usage{
 explorer(data = NULL, addEnv = TRUE, demo = FALSE)
 }

@@ -51,7 +51,7 @@ codebook <- function(data, settings = NULL) {
   htmlwidgets::createWidget(
     name = 'codebook',
     rSettings,
-    package = 'codebook', 
+    package = 'datadigest', 
     sizingPolicy = htmlwidgets::sizingPolicy(
       viewer.fill=FALSE
     )
@@ -77,7 +77,7 @@ codebook <- function(data, settings = NULL) {
 #'
 #' @export
 codebookOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'codebook', width, height, package = 'codebook')
+  htmlwidgets::shinyWidgetOutput(outputId, 'codebook', width, height, package = 'datadigest')
 }
 
 #' @rdname codebook-shiny

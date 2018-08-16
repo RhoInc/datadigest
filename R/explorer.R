@@ -1,4 +1,4 @@
-#' Create an interactive codebook
+#' Create an interactive codebook explorer
 #'
 #' This function produces an interactive codebook explorer using R htmlwidgets.
 #' The interactive codebook explorer allows the user to explore multiple data frames within 
@@ -142,7 +142,7 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
   htmlwidgets::createWidget(
     name = 'explorer',
     rSettings,
-    package = 'codebook', 
+    package = 'datadigest', 
     sizingPolicy = htmlwidgets::sizingPolicy(
       viewer.fill=FALSE
     )
@@ -168,7 +168,7 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
 #'
 #' @export
 explorerOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'explorer', width, height, package = 'codebook')
+  htmlwidgets::shinyWidgetOutput(outputId, 'explorer', width, height, package = 'datadigest')
 }
 
 #' @rdname explorer-shiny
