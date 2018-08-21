@@ -70,10 +70,11 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
     if (is.list(fileList)){
       for (i in seq_along(fileList)){
         df <- fileList[[i]]
+        df <- as.data.frame(df)
         for (j in 1:ncol(df)){
-          if (is.factor(df[,j])){
+       #   if (is.factor(df[,j])){
             df[,j] <- as.character(df[,j])
-          }  
+      #    }  
         }
         df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
@@ -86,10 +87,11 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
     } else if (is.vector(fileList)){
       for (i in seq_along(fileList)){
         df <- get(fileList[i])
+        df <- as.data.frame(df)
         for (j in 1:ncol(df)){
-          if (is.factor(df[,j])){
+      #    if (is.factor(df[,j])){
             df[,j] <- as.character(df[,j])
-          }
+       #   }
         }
         df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(

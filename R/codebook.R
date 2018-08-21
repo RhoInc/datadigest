@@ -33,10 +33,11 @@ codebook <- function(data, settings = NULL) {
   }
   
   ## convert NA to empty string for appropriate JS handling 
+  data <- as.data.frame(data)
   for (i in 1:ncol(data)){
-    if (is.factor(data[,i])){
+ #   if (is.factor(data[,i]) | inherits(data[,i][[1]], "Date")){
       data[,i] <- as.character(data[,i])
-    }
+ #   } 
   }
   data[is.na(data)] <- ""
  
