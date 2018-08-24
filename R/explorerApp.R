@@ -13,7 +13,7 @@
 
 explorerApp <- function(){
   ui = basicPage(
-    includeCSS("./inst/css/explorerTheme.css"), 
+    includeCSS("../inst/css/explorerTheme.css"), 
     helpText("File Controls"),
     fileInput('datafile','Upload file(s)', accept = c('.sas7bdat','.csv'), multiple=TRUE),
     actionButton('clear','Clear file list'),
