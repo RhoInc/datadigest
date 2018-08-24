@@ -6,7 +6,7 @@
 #' includes interactive features such as real-time filters, grouping, and highlighting. 
 #' The R interface allows the analyst to interactively explore datasets within the typical 
 #' analysis workflow and working environment.  
-#' \code{datadigest} has been built using the [htmlwidgets](htmlwidgets.org) framework.
+#' \code{datadigest} has been built using the \code{htmlwidgets} framework.
 #'
 #' @source Rho's web-codebook JavaScript library: \url{https://github.com/RhoInc/web-codebook}.
 #'
