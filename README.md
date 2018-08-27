@@ -29,4 +29,4 @@ library("datadigest")
 explorer(demo=T)
 ```
 
-Note that the name of this repo changed from "rhoinc/codebook" to "rhoinc/datadigest" prior to the release of v1.0 on CRAN. Any links to the codebook repo will automaticall redirect. 
+Note that the name of this repo changed from "rhoinc/codebook" to "rhoinc/datadigest" prior to the release of v1.0 on CRAN. Any links to the codebook repo will automatically redirect. 
