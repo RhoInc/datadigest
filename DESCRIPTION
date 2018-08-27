@@ -7,7 +7,7 @@ Authors@R: c(
 	person("Spencer", "Childress", role = c("aut")),
 	person("Jeremy", "Wildfire", role = c("aut")))
 Maintainer: Becca Krouse <rebecca_krouse@rhoworld.com>
-Description: datadigest provides an R interface for Rho's web-codebook JavaScript charting library. The user can create an htmlwidgets chart or utilize the built-in RStudio add-in to create and save a chart instance.
+Description: An R interface for Rho's web-codebook JavaScript charting library, which provides a simple interactive framework for exploring data. datadigest includes two key functions (codebook() and explorer()) that deliver a concise summary of every variable in a data frame, along with interactive features such as real-time filters, grouping, and highlighting. Each function has an associated RStudio addin/Shiny app for quick and convenient exploration of one or more data frames.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
