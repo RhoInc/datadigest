@@ -3,7 +3,7 @@ Description: Create interactive codebook from RStudio
 Binding: codebookApp
 Interactive: true
 
-Name: Data Explorer App
-Description: Explorer Data loaded in to the R session
+Name: explorerApp
+Description: Create interactive codebook explorer from RStudio
 Binding: explorerApp
 Interactive: true
