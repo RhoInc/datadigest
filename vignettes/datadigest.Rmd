@@ -77,7 +77,7 @@ Data Listing view, and in the Charts view.
 
 ```codebook()``` and ```codebookApp()``` produce interactive data summaries of a user-specified data frame.  These summaries contain the Codebook view, Data Listing view, Settings view, Charts view described [here](https://github.com/RhoInc/codebook/wiki/Codebook-Data-Summaries).
 
-### codebook()
+### ```codebook()```
 
 Produce an interactive codebook to explore in the RStudio viewer or an Rmarkdown or HTML document.  The user simply passes a data frame via the ```data``` argument.
 
@@ -88,7 +88,7 @@ Optionally, advanced users can customize the appearance and behavior of the inte
 codebook(data = mtcars)
 ```
 
-### codebookApp()
+### ```codebookApp()```
 
 Run the codebook Shiny application*.  The codebook shiny application, which will produce an interactive codebook using data from your R environment or a file upload.  Optionally select to view a static summary of the data using ```Hmisc::describe()```.  The resulting codebook (interactive or static) may be downloaded as an HTML file. 
 
@@ -99,7 +99,7 @@ codebookApp()
 
 ```explorer()``` and ```explorerApp()``` produce interactive data summaries of one or more user-specified data frames.  These summaries contain all 5 data summary views described [here](https://github.com/RhoInc/codebook/wiki/Codebook-Data-Summaries).
 
-### explorer()
+### ```explorer()```
 
 Produce an interactive codebook explorer to explore data frames within the RStudio viewer, a web browser, or an Rmarkdown or HTML document.  
 ```r
@@ -116,7 +116,7 @@ explorer(data = c("mtcars","iris"))
 explorer(demo = TRUE)
 ```
 
-### explorerApp()
+### ```explorerApp()```
 
 Run the explorer Shiny application.  The explorer shiny application generates an interactive codebook explorer using all datasets currently loaded in the user's R session.  If no data are available, the app is populated using the data from the ```datasets``` package. The user can upload one or more sas7bdat or csv files by navigating to a directory and selecting individual file(s).
 
