@@ -14,5 +14,5 @@ JavaScript library. This tool provides a concise summary of every variable in a 
 includes interactive features such as real-time filters, grouping, and highlighting. 
 The R interface allows the analyst to interactively explore datasets within the typical 
 analysis workflow and working environment.  
-\code{datadigest} has been built using the [htmlwidgets](htmlwidgets.org) framework.
+\code{datadigest} has been built using the \code{htmlwidgets} framework.
 }
