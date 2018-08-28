@@ -31,7 +31,7 @@
 #' @import datasets
 #'
 #' @export
-explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
+explorer <- function(data = NULL, addEnv = TRUE, demo = FALSE) {
 
   # get names of files in dataList as text string
   if (is.list(data)){
@@ -112,7 +112,15 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
       rSettings[["settings"]][["files"]] = c(rSettings[["settings"]][["files"]], data_list_formatted)
     }
 
-  # (3) Prep an array of objects for the environment files (if addEnv=T)
+  # (3) load 20 datasets and put them in the environment (if demo=T)
+    if(demo){
+      addEnv <- FALSE # force addEnv to be false
+      demo_list = ls("package:datasets")[sapply(ls("package:datasets"), function(x) inherits(get(x), "data.frame"))]
+      demo_list_formatted <- formatFileList(demo_list)
+      rSettings[["settings"]][["files"]] = demo_list_formatted #ignores other settings
+    }
+    
+  # (4) Prep an array of objects for the environment files (if addEnv=T)
   if(addEnv){
     if(length(ls(pos=1))>0){
       env_list <- ls(pos=1)[sapply(ls(pos=1), function(x) inherits(get(x), "data.frame"))]
@@ -133,14 +141,8 @@ explorer <- function(data = NULL, addEnv=TRUE, demo=FALSE) {
     
   }
 
-  # (4) load 20 datasets and put them in the environment (if demo=T)
-  if(demo){
-    demo_list = ls("package:datasets")[sapply(ls("package:datasets"), function(x) inherits(get(x), "data.frame"))]
-    demo_list_formatted <- formatFileList(demo_list)
-    rSettings[["settings"]][["files"]] = demo_list_formatted #ignores other settings
-  }
 
-  # (4) create widget
+  # (5) create widget
   htmlwidgets::createWidget(
     name = 'explorer',
     rSettings,
