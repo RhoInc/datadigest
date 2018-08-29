@@ -72,9 +72,7 @@ explorer <- function(data = NULL, addEnv = TRUE, demo = FALSE) {
         df <- fileList[[i]]
         df <- as.data.frame(df)
         for (j in 1:ncol(df)){
-       #   if (is.factor(df[,j])){
             df[,j] <- as.character(df[,j])
-      #    }  
         }
         df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
@@ -89,9 +87,7 @@ explorer <- function(data = NULL, addEnv = TRUE, demo = FALSE) {
         df <- get(fileList[i])
         df <- as.data.frame(df)
         for (j in 1:ncol(df)){
-      #    if (is.factor(df[,j])){
             df[,j] <- as.character(df[,j])
-       #   }
         }
         df[is.na(df)] <- ""
         fileList_formatted[[i]] <- list(
@@ -141,7 +137,7 @@ explorer <- function(data = NULL, addEnv = TRUE, demo = FALSE) {
     
   }
 
-
+    
   # (5) create widget
   htmlwidgets::createWidget(
     name = 'explorer',
