@@ -1,6 +1,6 @@
 Package: datadigest
 Type: Package
-Title: Create an Interactive Codebook from R
+Title: Create an Interactive Data Summary from R
 Version: 1.0.1
 Authors@R: c(
 	person("Becca", "Krouse", email = "rebecca_krouse@rhoworld.com", role = c("cre","aut")),
