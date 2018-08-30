@@ -17,7 +17,7 @@
 #' }
 #'
 #' @examples
-#' codebook(data=mtcars)
+#' codebook(data = mtcars)
 #'
 #' @import htmlwidgets
 #' @importFrom tibble is_tibble

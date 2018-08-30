@@ -1,0 +1,5 @@
+# datadigest 1.0.1
+
+Initial release for datadigest, an R interface for Rho's [web-codebook](https://github.com/RhoInc/web-codebook) JavaScript library. The r version of the codebook has been built using the [htmlwidgets](htmlwidgets.org) framework and consists of two key functions: ```codebook()``` and ```explorer()```.  ```codebook()``` delivers an interactive interface for a single data frame while ```explorer()``` extends this functionality, allowing the user to navigate through multiple data frames. 
+
+While ```codebook()``` and ```explorer()``` can be loaded as HTML widgets using their respective R functions, the package also includes a dedicated Shiny application for each. The shiny applications offer easy access to data currently loaded in the R session, the ability to upload data files, and/or the ability to download a static or interactive data summary. Following package installation, RStudio users may access the two applications via the toolbar as RStudio add-ins.

@@ -25,7 +25,7 @@ The codebook can also be embedded in an R Markdown document or saved as a standa
 }
 }
 \examples{
-codebook(data=mtcars)
+codebook(data = mtcars)
 
 }
 \seealso{

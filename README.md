@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/RhoInc/datadigest.svg?branch=master)](https://travis-ci.org/RhoInc/datadigest)
+
 # Data Digest
 
 The **datadigest** package provides a simple interactive framework for exploring data. You can:
