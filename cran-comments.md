@@ -1,5 +1,10 @@
-# Version 1.0.1
-This is the first submission of datadigest.
+# Version 1.0.2
+This is a resubmission of datadigest.  In this version we have:
+
+* Omit "from R" from the Title.
+* Added quotes to software names.
+* Used the CRAN template for the LICENSE file.
+* Indentified the copyright holder in the DECSRIPTION file.
 
 ## Test environments
 * ubuntu 14.04, R 3.5.0 (on travis-ci)
