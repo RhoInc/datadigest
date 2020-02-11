@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans: 400,300);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 /*------------------------------------------------------------------------------------------------\
   General
@@ -229,8 +229,7 @@
     Row layout
 \------------------------------------------------------------------------------------------------*/
 
-.web-codebook .summaryTable > * {
-}
+
 
 .web-codebook .summaryTable .summaryText {
     display: block;
@@ -238,10 +237,9 @@
 }
 
 .web-codebook .summaryTable .variable-row {
-  position: relative;
-    margin-top: 0.3em;
+    position: relative;
     display: block;
-    border: 1px solid #999;
+    border-bottom: 1px solid #ccc;
 }
 
 .web-codebook .summaryTable .variable-row .section {
@@ -324,6 +322,22 @@
   float:right;
 }
 
+.web-codebook .summaryTable .variable-row .row-title .spark .sparkLabel{
+  font-size:0.5em;
+  padding:0 0.2em;
+  margin-left:0.5em;
+  margin-bottom:0.4em;
+  margin-right:0.5em;
+  display:inline-block;
+  width:3em;
+  border-radius:0.2em;
+  vertical-align:middle;
+  text-align:center;
+  background:white;
+  color:#999;
+  cursor:pointer;
+}
+
 /**-------------------------------------------------------------------------------------------\
     Header - Missing Count
 \-------------------------------------------------------------------------------------------**/
@@ -399,8 +413,23 @@
     margin-right: .5em;
 }
 
-.web-codebook .summaryTable .variable-row .row-chart div.missingText{
+.web-codebook .summaryTable .variable-row .row-chart .missingText{
     padding: .5em;
+    color: #f03b20;
+    font-size:0.8em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart div.characterSummary{
+    padding: .5em;
+}
+
+.web-codebook .summaryTable .variable-row .row-chart div.characterSummary span.caution{
+    font-size:0.8em;
+    color: #f03b20;
+}
+.web-codebook .summaryTable .variable-row .row-chart div.characterSummary span.caution span.drawLevel{
+    text-decoration:underline;
+    cursor:pointer;    
 }
 
 .web-codebook .summaryTable .variable-row .row-chart p.panel-label{
@@ -486,10 +515,6 @@
 /*------------------------------------------------------------------------------------------------\
     Data listing
 \------------------------------------------------------------------------------------------------*/
-
-    .web-codebook .dataListing {
-
-    }
 
     .web-codebook .dataListing .description {
         padding: 0 5px 0 5px;
@@ -595,6 +620,32 @@
     text-decoration: underline;
     cursor: pointer;
     }
+
+/*------------------------------------------------------------------------------------------------\
+    Data Listing - Data Loader
+\------------------------------------------------------------------------------------------------*/
+
+.web-codebook .fileListing .dataLoader{
+  padding-bottom:1em;
+}
+.web-codebook .fileListing .dataLoader label{
+      font-size:0.8em;
+      font-weight: 0;
+      border-bottom:1px solid black;
+      display: inline-block;
+      padding:0.1em;
+      cursor:pointer;
+      padding-right:0.5em;
+  }
+
+  .web-codebook .fileListing .dataLoader label:hover {
+      background-color: #ccc;
+
+  }
+
+.web-codebook .fileListing .dataLoader label input{
+  display:none;
+}
 
 /*------------------------------------------------------------------------------------------------\
     Chart Maker
