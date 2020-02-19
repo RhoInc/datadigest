@@ -1,7 +1,7 @@
 Package: datadigest
 Type: Package
 Title: Create an Interactive Data Summary
-Version: 1.0.2
+Version: 1.1.0
 Authors@R: c(
 	person("Becca", "Krouse", email = "rebecca_krouse@rhoworld.com", role = c("cre","aut")),
 	person("Spencer", "Childress", role = "aut"),
