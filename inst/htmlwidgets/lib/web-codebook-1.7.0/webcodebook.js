@@ -865,6 +865,16 @@
 
     //EXIT
     varRows.exit().remove();
+
+    codebook.summaryTable.wrap.selectAll('div.status.error').remove();
+    if (varRows[0].length == 0) {
+      codebook.summaryTable.wrap
+        .append('div')
+        .attr('class', 'status error')
+        .text(
+          'No values selected. Update the filters above or load a different data set.'
+        );
+    }
   }
 
   function moveYaxis(chart) {
@@ -2206,7 +2216,9 @@
             'stroke-width': '1px'
           });
       } else {
-        console.log(outliers.length + ' not draw for the following chart:');
+        console.log(
+          outliers.length + ' outliers not drawn for the following chart:'
+        );
         console.log(chart.wrap);
       }
     }
@@ -2638,12 +2650,15 @@
           .html('and ' + extraCount + ' more.');
       }
     } else if (d.type == 'continuous') {
+      var nonMissing = d.values
+        .filter(function(f) {
+          return !f.missing;
+        })
+        .map(function(m) {
+          return +m.value;
+        });
       var sortedValues = d3$1
-        .set(
-          d.values.map(function(d) {
-            return +d.value;
-          })
-        )
+        .set(nonMissing)
         .values() //get unique
         .sort(function(a, b) {
           return a - b;
@@ -3299,7 +3314,9 @@
       chartMaker.wrap
         .append('div')
         .attr('class', 'status error')
-        .text('Data not found. Update filters to try again.');
+        .text(
+          'No continuous and/or group variables available to plot. Visit the settings tabs to update variable settings.'
+        );
     } else {
       chartMaker.chartSettings = makeSettings(chartMakerSettings, x_obj, y_obj);
       chartMaker.chartSettings.width = codebook.config.group ? 320 : 600;

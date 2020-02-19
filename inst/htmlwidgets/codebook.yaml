@@ -10,6 +10,6 @@ dependencies:
    stylesheet: webcharts.css
  - name: web-codebook
    version: 1.7.0
-   src: htmlwidgets/lib/web-codebook-1.7.0-dev
+   src: htmlwidgets/lib/web-codebook-1.7.0
    script: webcodebook.js
    stylesheet: webcodebook.css
